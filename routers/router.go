@@ -15,9 +15,46 @@ import (
 
 func init() {
 	ns := beego.NewNamespace("/v1",
-		beego.NSNamespace("/object",
+		beego.NSNamespace("/medicinaAntecedente",
 			beego.NSInclude(
-				&controllers.ObjectController{},
+				&controllers.MedicinaAntecedenteController{},
+			),
+		),
+		beego.NSNamespace("/medicinaConsultaFisioterapia",
+			beego.NSInclude(
+				&controllers.MedicinaConsultaFisioterapiaController{},
+			),
+		),
+		beego.NSNamespace("/medicinaDiagnostico",
+			beego.NSInclude(
+				&controllers.MedicinaDiagnosticoController{},
+			),
+		),
+		beego.NSNamespace("/medicinaExamen",
+			beego.NSInclude(
+				&controllers.MedicinaExamenController{},
+			),
+		), beego.NSNamespace("/medicinaHistoriaClinica",
+			beego.NSInclude(
+				&controllers.MedicinaHistoriaClinicaController{},
+			),
+		), beego.NSNamespace("/medicinaHojaHistoria",
+			beego.NSInclude(
+				&controllers.MedicinaHojaHistoriaController{},
+			),
+		), beego.NSNamespace("/medicinaSistemas",
+			beego.NSInclude(
+				&controllers.MedicinaSistemasController{},
+			),
+		),
+		beego.NSNamespace("/medicinaTipoAntecedente",
+			beego.NSInclude(
+				&controllers.MedicinaTipoAntecedenteController{},
+			),
+		),
+		beego.NSNamespace("/medicinaTipoExamen",
+			beego.NSInclude(
+				&controllers.MedicinaTipoExamenController{},
 			),
 		),
 	)
