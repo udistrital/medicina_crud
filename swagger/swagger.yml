@@ -11,124 +11,6 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 basePath: /v1
 paths:
-  /medicinaAntecedente/:
-    get:
-      tags:
-      - medicinaAntecedente
-      description: consulta todos los registros de la tabla MedicinaAntecedente
-      operationId: MedicinaAntecedenteController.Get All
-      parameters:
-      - in: consulta
-        name: query
-        description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
-        type: string
-      - in: consulta
-        name: fields
-        description: Campos devueltos. Por ejemplo, col1, col2 ...
-        type: string
-      - in: consulta
-        name: sortby
-        description: Campos ordenados por. Por ejemplo, Col1, col2 ...
-        type: string
-      - in: consulta
-        name: order
-        description: El orden correspondiente a cada campo de clasificación, si es
-          un valor único, se aplica a todos los campos de clasificación. Por ejemplo,
-          desc, asc ...
-        type: string
-      - in: consulta
-        name: limit
-        description: Limite el tamaño del conjunto de resultados. Debe ser un número
-          entero
-        type: string
-      - in: consulta
-        name: offset
-        description: Posición inicial del conjunto de resultados. Debe ser un número
-          entero
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.MedicinaAntecedente'
-        "403":
-          description: ""
-    post:
-      tags:
-      - medicinaAntecedente
-      description: agregar un registro en la tabla MedicinaAntecedente
-      operationId: MedicinaAntecedenteController.Post
-      parameters:
-      - in: body
-        name: body
-        description: Cuerpo para el contenido de MedicinaAntecedente
-        required: true
-        schema:
-          $ref: '#/definitions/models.MedicinaAntecedente'
-      responses:
-        "201":
-          description: '{int} models.MedicinaAntecedente'
-        "403":
-          description: Cuerpo Vacío
-  /medicinaAntecedente/{id}:
-    get:
-      tags:
-      - medicinaAntecedente
-      description: consultar un registro de la tabla MedicinaAntecedente por su id
-      operationId: MedicinaAntecedenteController.Get One
-      parameters:
-      - in: path
-        name: id
-        description: Id a consultar
-        required: true
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.MedicinaAntecedente'
-        "403":
-          description: :id  está vacío
-    put:
-      tags:
-      - medicinaAntecedente
-      description: actualizar un registro de la tabla MedicinaAntecedente
-      operationId: MedicinaAntecedenteController.Put
-      parameters:
-      - in: path
-        name: id
-        description: Id del registro a actualizar
-        required: true
-        type: string
-      - in: body
-        name: body
-        description: Cuerpo para el contenido de MedicinaAntecedente
-        required: true
-        schema:
-          $ref: '#/definitions/models.MedicinaAntecedente'
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.MedicinaAntecedente'
-        "403":
-          description: :id no es entero
-    delete:
-      tags:
-      - medicinaAntecedente
-      description: elimina un registro de la tabla MedicinaAntecedente
-      operationId: MedicinaAntecedenteController.Delete
-      parameters:
-      - in: path
-        name: id
-        description: Id del registro a eliminar
-        required: true
-        type: string
-      responses:
-        "200":
-          description: '{string} borrado exitoso!'
-        "403":
-          description: Id vacío
   /medicinaConsultaFisioterapia/:
     get:
       tags:
@@ -1077,14 +959,14 @@ paths:
         "403":
           description: Id vacío
 definitions:
-  models.MedicinaAntecedente:
-    title: MedicinaAntecedente
+  models.Antecedente:
+    title: Antecedente
     type: object
     properties:
-      IdHistoriaClinica:
+      IdAntecedente:
         type: integer
         format: int64
-      IdMedicinaAntecedente:
+      IdHistoriaClinica:
         type: integer
         format: int64
       IdTipoAntecedente:
@@ -1095,110 +977,18 @@ definitions:
   models.MedicinaConsultaFisioterapia:
     title: MedicinaConsultaFisioterapia
     type: object
-    properties:
-      Evolucion:
-        type: string
-      IdHojaHistoria:
-        type: integer
-        format: int64
-      IdMedicinaConsultaFisioterapia:
-        type: integer
-        format: int64
-      Motivo_consulta:
-        type: string
-      Observaciones:
-        type: string
-      PlanManejo:
-        type: string
-      Valoracion:
-        type: string
   models.MedicinaDiagnostico:
     title: MedicinaDiagnostico
     type: object
-    properties:
-      Activo:
-        type: boolean
-      Analisis:
-        type: string
-      Descripcion:
-        type: string
-      FechaCreacion:
-        type: string
-        format: datetime
-      FechaModificacion:
-        type: string
-        format: datetime
-      IdDiagnosticoMedicina:
-        type: integer
-        format: int64
-      Nombre:
-        type: string
-      Numero:
-        type: integer
-        format: int64
-      PlanManejo:
-        type: string
   models.MedicinaExamen:
     title: MedicinaExamen
     type: object
-    properties:
-      FechaExamen:
-        type: string
-        format: datetime
-      IdExamen:
-        type: integer
-        format: int64
-      IdHojaHistoria:
-        type: integer
-        format: int64
-      IdTipoExamen:
-        type: integer
-        format: int64
-      Nombre:
-        type: string
-      Observacion:
-        type: string
   models.MedicinaHistoriaClinica:
     title: MedicinaHistoriaClinica
     type: object
-    properties:
-      IdHistoriaClinica:
-        type: integer
-        format: int64
-      IdTercero:
-        type: integer
-        format: int64
   models.MedicinaHojaHistoria:
     title: MedicinaHojaHistoria
     type: object
-    properties:
-      Evolucion:
-        type: string
-      FechaConsulta:
-        type: string
-        format: datetime
-      IdDiagnostico:
-        type: integer
-        format: int64
-      IdEspecialidad:
-        type: integer
-        format: int64
-      IdHistoriaClinica:
-        type: integer
-        format: int64
-      IdHojaHistoria:
-        type: integer
-        format: int64
-      IdPersona:
-        type: integer
-        format: int64
-      IdProfesional:
-        type: integer
-        format: int64
-      Motivo:
-        type: string
-      Observacion:
-        type: string
   models.MedicinaSistemas:
     title: MedicinaSistemas
     type: object
@@ -1216,28 +1006,6 @@ definitions:
   models.MedicinaTipoAntecedente:
     title: MedicinaTipoAntecedente
     type: object
-    properties:
-      Activo:
-        type: boolean
-      Descripcion:
-        type: string
-      FechaCreacion:
-        type: string
-        format: datetime
-      FechaModificacion:
-        type: string
-        format: datetime
-      IdTipoAntecedente:
-        type: integer
-        format: int64
-      Nombre:
-        type: string
   models.MedicinaTipoExamen:
     title: MedicinaTipoExamen
     type: object
-    properties:
-      IdTipoExamen:
-        type: integer
-        format: int64
-      Nombre:
-        type: string
