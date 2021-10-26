@@ -14,1392 +14,7 @@
         }
     },
     "basePath": "/v1",
-    "paths": {
-        "/medicinaConsultaFisioterapia/": {
-            "get": {
-                "tags": [
-                    "medicinaConsultaFisioterapia"
-                ],
-                "description": "consulta todos los registros de la tabla MedicinaConsultaFisioterapia",
-                "operationId": "MedicinaConsultaFisioterapiaController.Get All",
-                "parameters": [
-                    {
-                        "in": "consulta",
-                        "name": "query",
-                        "description": "Filtro. Por ejemplo, col1: v1, col2: v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "fields",
-                        "description": "Campos devueltos. Por ejemplo, col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "sortby",
-                        "description": "Campos ordenados por. Por ejemplo, Col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "order",
-                        "description": "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "limit",
-                        "description": "Limite el tamaño del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "offset",
-                        "description": "Posición inicial del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaConsultaFisioterapia"
-                        }
-                    },
-                    "403": {
-                        "description": ""
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "medicinaConsultaFisioterapia"
-                ],
-                "description": "agregar un registro en la tabla MedicinaConsultaFisioterapia",
-                "operationId": "MedicinaConsultaFisioterapiaController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de MedicinaConsultaFisioterapia",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaConsultaFisioterapia"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.MedicinaConsultaFisioterapia"
-                    },
-                    "403": {
-                        "description": "Cuerpo Vacío"
-                    }
-                }
-            }
-        },
-        "/medicinaConsultaFisioterapia/{id}": {
-            "get": {
-                "tags": [
-                    "medicinaConsultaFisioterapia"
-                ],
-                "description": "consultar un registro de la tabla MedicinaConsultaFisioterapia por su id",
-                "operationId": "MedicinaConsultaFisioterapiaController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id a consultar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaConsultaFisioterapia"
-                        }
-                    },
-                    "403": {
-                        "description": ":id está vacío"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "medicinaConsultaFisioterapia"
-                ],
-                "description": "actualizar un registro de la tabla MedicinaConsultaFisioterapia",
-                "operationId": "MedicinaConsultaFisioterapiaController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a actualizar",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de MedicinaConsultaFisioterapia",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaConsultaFisioterapia"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaConsultaFisioterapia"
-                        }
-                    },
-                    "403": {
-                        "description": ":id no es entero"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "medicinaConsultaFisioterapia"
-                ],
-                "description": "elimina un registro de la tabla MedicinaConsultaFisioterapia",
-                "operationId": "MedicinaConsultaFisioterapiaController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a eliminar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} borrado exitoso!"
-                    },
-                    "403": {
-                        "description": "Id vacío"
-                    }
-                }
-            }
-        },
-        "/medicinaDiagnostico/": {
-            "get": {
-                "tags": [
-                    "medicinaDiagnostico"
-                ],
-                "description": "consulta todos los registros de la tabla MedicinaDiagnostico",
-                "operationId": "MedicinaDiagnosticoController.Get All",
-                "parameters": [
-                    {
-                        "in": "consulta",
-                        "name": "query",
-                        "description": "Filtro. Por ejemplo, col1: v1, col2: v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "fields",
-                        "description": "Campos devueltos. Por ejemplo, col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "sortby",
-                        "description": "Campos ordenados por. Por ejemplo, Col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "order",
-                        "description": "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "limit",
-                        "description": "Limite el tamaño del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "offset",
-                        "description": "Posición inicial del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaDiagnostico"
-                        }
-                    },
-                    "403": {
-                        "description": ""
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "medicinaDiagnostico"
-                ],
-                "description": "agregar un registro en la tabla MedicinaDiagnostico",
-                "operationId": "MedicinaDiagnosticoController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de MedicinaConsultaFisioterapia",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaDiagnostico"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.MedicinaDiagnostico"
-                    },
-                    "403": {
-                        "description": "Cuerpo Vacío"
-                    }
-                }
-            }
-        },
-        "/medicinaDiagnostico/{id}": {
-            "get": {
-                "tags": [
-                    "medicinaDiagnostico"
-                ],
-                "description": "consultar un registro de la tabla MedicinaDiagnostico por su id",
-                "operationId": "MedicinaDiagnosticoController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id a consultar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaDiagnostico"
-                        }
-                    },
-                    "403": {
-                        "description": ":id está vacío"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "medicinaDiagnostico"
-                ],
-                "description": "actualizar un registro de la tabla MedicinaDiagnostico",
-                "operationId": "MedicinaDiagnosticoController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a actualizar",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de MedicinaConsultaFisioterapia",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaDiagnostico"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaDiagnostico"
-                        }
-                    },
-                    "403": {
-                        "description": ":id no es entero"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "medicinaDiagnostico"
-                ],
-                "description": "elimina un registro de la tabla MedicinaDiagnostico",
-                "operationId": "MedicinaDiagnosticoController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a eliminar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} borrado exitoso!"
-                    },
-                    "403": {
-                        "description": "Id vacío"
-                    }
-                }
-            }
-        },
-        "/medicinaExamen/": {
-            "get": {
-                "tags": [
-                    "medicinaExamen"
-                ],
-                "description": "consulta todos los registros de la tabla MedicinaExamen",
-                "operationId": "MedicinaExamenController.Get All",
-                "parameters": [
-                    {
-                        "in": "consulta",
-                        "name": "query",
-                        "description": "Filtro. Por ejemplo, col1: v1, col2: v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "fields",
-                        "description": "Campos devueltos. Por ejemplo, col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "sortby",
-                        "description": "Campos ordenados por. Por ejemplo, Col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "order",
-                        "description": "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "limit",
-                        "description": "Limite el tamaño del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "offset",
-                        "description": "Posición inicial del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaExamen"
-                        }
-                    },
-                    "403": {
-                        "description": ""
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "medicinaExamen"
-                ],
-                "description": "agregar un registro en la tabla MedicinaExamen",
-                "operationId": "MedicinaExamenController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de MedicinaConsultaFisioterapia",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaExamen"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.MedicinaExamen"
-                    },
-                    "403": {
-                        "description": "Cuerpo Vacío"
-                    }
-                }
-            }
-        },
-        "/medicinaExamen/{id}": {
-            "get": {
-                "tags": [
-                    "medicinaExamen"
-                ],
-                "description": "consultar un registro de la tabla MedicinaExamen por su id",
-                "operationId": "MedicinaExamenController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id a consultar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaExamen"
-                        }
-                    },
-                    "403": {
-                        "description": ":id está vacío"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "medicinaExamen"
-                ],
-                "description": "actualizar un registro de la tabla MedicinaExamen",
-                "operationId": "MedicinaExamenController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a actualizar",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de MedicinaConsultaFisioterapia",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaExamen"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaExamen"
-                        }
-                    },
-                    "403": {
-                        "description": ":id no es entero"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "medicinaExamen"
-                ],
-                "description": "elimina un registro de la tabla MedicinaExamen",
-                "operationId": "MedicinaExamenController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a eliminar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} borrado exitoso!"
-                    },
-                    "403": {
-                        "description": "Id vacío"
-                    }
-                }
-            }
-        },
-        "/medicinaHistoriaClinica/": {
-            "get": {
-                "tags": [
-                    "medicinaHistoriaClinica"
-                ],
-                "description": "consulta todos los registros de la tabla MedicinaHistoriaClinica",
-                "operationId": "MedicinaHistoriaClinicaController.Get All",
-                "parameters": [
-                    {
-                        "in": "consulta",
-                        "name": "query",
-                        "description": "Filtro. Por ejemplo, col1: v1, col2: v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "fields",
-                        "description": "Campos devueltos. Por ejemplo, col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "sortby",
-                        "description": "Campos ordenados por. Por ejemplo, Col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "order",
-                        "description": "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "limit",
-                        "description": "Limite el tamaño del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "offset",
-                        "description": "Posición inicial del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaHistoriaClinica"
-                        }
-                    },
-                    "403": {
-                        "description": ""
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "medicinaHistoriaClinica"
-                ],
-                "description": "agregar un registro en la tabla MedicinaHistoriaClinica",
-                "operationId": "MedicinaHistoriaClinicaController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de MedicinaConsultaFisioterapia",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaHistoriaClinica"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.MedicinaHistoriaClinica"
-                    },
-                    "403": {
-                        "description": "Cuerpo Vacío"
-                    }
-                }
-            }
-        },
-        "/medicinaHistoriaClinica/{id}": {
-            "get": {
-                "tags": [
-                    "medicinaHistoriaClinica"
-                ],
-                "description": "consultar un registro de la tabla MedicinaHistoriaClinica por su id",
-                "operationId": "MedicinaHistoriaClinicaController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id a consultar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaHistoriaClinica"
-                        }
-                    },
-                    "403": {
-                        "description": ":id está vacío"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "medicinaHistoriaClinica"
-                ],
-                "description": "actualizar un registro de la tabla MedicinaHistoriaClinica",
-                "operationId": "MedicinaHistoriaClinicaController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a actualizar",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de MedicinaConsultaFisioterapia",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaHistoriaClinica"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaHistoriaClinica"
-                        }
-                    },
-                    "403": {
-                        "description": ":id no es entero"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "medicinaHistoriaClinica"
-                ],
-                "description": "elimina un registro de la tabla MedicinaHistoriaClinica",
-                "operationId": "MedicinaHistoriaClinicaController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a eliminar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} borrado exitoso!"
-                    },
-                    "403": {
-                        "description": "Id vacío"
-                    }
-                }
-            }
-        },
-        "/medicinaHojaHistoria/": {
-            "get": {
-                "tags": [
-                    "medicinaHojaHistoria"
-                ],
-                "description": "consulta todos los registros de la tabla MedicinaHojaHistoria",
-                "operationId": "MedicinaHojaHistoriaController.Get All",
-                "parameters": [
-                    {
-                        "in": "consulta",
-                        "name": "query",
-                        "description": "Filtro. Por ejemplo, col1: v1, col2: v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "fields",
-                        "description": "Campos devueltos. Por ejemplo, col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "sortby",
-                        "description": "Campos ordenados por. Por ejemplo, Col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "order",
-                        "description": "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "limit",
-                        "description": "Limite el tamaño del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "offset",
-                        "description": "Posición inicial del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaHojaHistoria"
-                        }
-                    },
-                    "403": {
-                        "description": ""
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "medicinaHojaHistoria"
-                ],
-                "description": "agregar un registro en la tabla MedicinaHojaHistoria",
-                "operationId": "MedicinaHojaHistoriaController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de MedicinaConsultaFisioterapia",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaHojaHistoria"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.MedicinaHojaHistoria"
-                    },
-                    "403": {
-                        "description": "Cuerpo Vacío"
-                    }
-                }
-            }
-        },
-        "/medicinaHojaHistoria/{id}": {
-            "get": {
-                "tags": [
-                    "medicinaHojaHistoria"
-                ],
-                "description": "consultar un registro de la tabla MedicinaHojaHistoria por su id",
-                "operationId": "MedicinaHojaHistoriaController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id a consultar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaHojaHistoria"
-                        }
-                    },
-                    "403": {
-                        "description": ":id está vacío"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "medicinaHojaHistoria"
-                ],
-                "description": "actualizar un registro de la tabla MedicinaHojaHistoria",
-                "operationId": "MedicinaHojaHistoriaController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a actualizar",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de MedicinaConsultaFisioterapia",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaHojaHistoria"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaHojaHistoria"
-                        }
-                    },
-                    "403": {
-                        "description": ":id no es entero"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "medicinaHojaHistoria"
-                ],
-                "description": "elimina un registro de la tabla MedicinaHojaHistoria",
-                "operationId": "MedicinaHojaHistoriaController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a eliminar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} borrado exitoso!"
-                    },
-                    "403": {
-                        "description": "Id vacío"
-                    }
-                }
-            }
-        },
-        "/medicinaSistemas/": {
-            "get": {
-                "tags": [
-                    "medicinaSistemas"
-                ],
-                "description": "consulta todos los registros de la tabla MedicinaSistemas",
-                "operationId": "MedicinaSistemasController.Get All",
-                "parameters": [
-                    {
-                        "in": "consulta",
-                        "name": "query",
-                        "description": "Filtro. Por ejemplo, col1: v1, col2: v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "fields",
-                        "description": "Campos devueltos. Por ejemplo, col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "sortby",
-                        "description": "Campos ordenados por. Por ejemplo, Col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "order",
-                        "description": "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "limit",
-                        "description": "Limite el tamaño del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "offset",
-                        "description": "Posición inicial del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaSistemas"
-                        }
-                    },
-                    "403": {
-                        "description": ""
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "medicinaSistemas"
-                ],
-                "description": "agregar un registro en la tabla MedicinaSistemas",
-                "operationId": "MedicinaSistemasController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de MedicinaSistemas",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaSistemas"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.MedicinaSistemas"
-                    },
-                    "403": {
-                        "description": "Cuerpo Vacío"
-                    }
-                }
-            }
-        },
-        "/medicinaSistemas/{id}": {
-            "get": {
-                "tags": [
-                    "medicinaSistemas"
-                ],
-                "description": "consultar un registro de la tabla MedicinaSistemas por su id",
-                "operationId": "MedicinaSistemasController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id a consultar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaSistemas"
-                        }
-                    },
-                    "403": {
-                        "description": ":id está vacío"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "medicinaSistemas"
-                ],
-                "description": "actualizar un registro de la tabla MedicinaSistemas",
-                "operationId": "MedicinaSistemasController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a actualizar",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de MedicinaSistemas",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaSistemas"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaSistemas"
-                        }
-                    },
-                    "403": {
-                        "description": ":id no es entero"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "medicinaSistemas"
-                ],
-                "description": "elimina un registro de la tabla MedicinaSistemas",
-                "operationId": "MedicinaSistemasController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a eliminar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} borrado exitoso!"
-                    },
-                    "403": {
-                        "description": "Id vacío"
-                    }
-                }
-            }
-        },
-        "/medicinaTipoAntecedente/": {
-            "get": {
-                "tags": [
-                    "medicinaTipoAntecedente"
-                ],
-                "description": "consulta todos los registros de la tabla MedicinaTipoAntecedente",
-                "operationId": "MedicinaTipoAntecedenteController.Get All",
-                "parameters": [
-                    {
-                        "in": "consulta",
-                        "name": "query",
-                        "description": "Filtro. Por ejemplo, col1: v1, col2: v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "fields",
-                        "description": "Campos devueltos. Por ejemplo, col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "sortby",
-                        "description": "Campos ordenados por. Por ejemplo, Col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "order",
-                        "description": "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "limit",
-                        "description": "Limite el tamaño del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "offset",
-                        "description": "Posición inicial del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaTipoAntecedente"
-                        }
-                    },
-                    "403": {
-                        "description": ""
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "medicinaTipoAntecedente"
-                ],
-                "description": "agregar un registro en la tabla MedicinaTipoAntecedente",
-                "operationId": "MedicinaTipoAntecedenteController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de MedicinaTipoAntecedente",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaTipoAntecedente"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.MedicinaTipoAntecedente"
-                    },
-                    "403": {
-                        "description": "Cuerpo Vacío"
-                    }
-                }
-            }
-        },
-        "/medicinaTipoAntecedente/{id}": {
-            "get": {
-                "tags": [
-                    "medicinaTipoAntecedente"
-                ],
-                "description": "consultar un registro de la tabla MedicinaTipoAntecedente por su id",
-                "operationId": "MedicinaTipoAntecedenteController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id a consultar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaTipoAntecedente"
-                        }
-                    },
-                    "403": {
-                        "description": ":id está vacío"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "medicinaTipoAntecedente"
-                ],
-                "description": "actualizar un registro de la tabla MedicinaTipoAntecedente",
-                "operationId": "MedicinaTipoAntecedenteController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a actualizar",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de MedicinaTipoAntecedente",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaTipoAntecedente"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaTipoAntecedente"
-                        }
-                    },
-                    "403": {
-                        "description": ":id no es entero"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "medicinaTipoAntecedente"
-                ],
-                "description": "elimina un registro de la tabla MedicinaTipoAntecedente",
-                "operationId": "MedicinaTipoAntecedenteController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a eliminar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} borrado exitoso!"
-                    },
-                    "403": {
-                        "description": "Id vacío"
-                    }
-                }
-            }
-        },
-        "/medicinaTipoExamen/": {
-            "get": {
-                "tags": [
-                    "medicinaTipoExamen"
-                ],
-                "description": "consulta todos los registros de la tabla MedicinaTipoExamen",
-                "operationId": "MedicinaTipoExamenController.Get All",
-                "parameters": [
-                    {
-                        "in": "consulta",
-                        "name": "query",
-                        "description": "Filtro. Por ejemplo, col1: v1, col2: v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "fields",
-                        "description": "Campos devueltos. Por ejemplo, col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "sortby",
-                        "description": "Campos ordenados por. Por ejemplo, Col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "order",
-                        "description": "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "limit",
-                        "description": "Limite el tamaño del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "offset",
-                        "description": "Posición inicial del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaTipoExamen"
-                        }
-                    },
-                    "403": {
-                        "description": ""
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "medicinaTipoExamen"
-                ],
-                "description": "agregar un registro en la tabla MedicinaTipoExamen",
-                "operationId": "MedicinaTipoExamenController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de MedicinaTipoExamen",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaTipoExamen"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.MedicinaTipoExamen"
-                    },
-                    "403": {
-                        "description": "Cuerpo Vacío"
-                    }
-                }
-            }
-        },
-        "/medicinaTipoExamen/{id}": {
-            "get": {
-                "tags": [
-                    "medicinaTipoExamen"
-                ],
-                "description": "consultar un registro de la tabla MedicinaTipoExamen por su id",
-                "operationId": "MedicinaTipoExamenController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id a consultar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaTipoExamen"
-                        }
-                    },
-                    "403": {
-                        "description": ":id está vacío"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "medicinaTipoExamen"
-                ],
-                "description": "actualizar un registro de la tabla MedicinaTipoExamen",
-                "operationId": "MedicinaTipoExamenController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a actualizar",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de MedicinaTipoExamen",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaTipoExamen"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MedicinaTipoExamen"
-                        }
-                    },
-                    "403": {
-                        "description": ":id no es entero"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "medicinaTipoExamen"
-                ],
-                "description": "elimina un registro de la tabla MedicinaTipoExamen",
-                "operationId": "MedicinaTipoExamenController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a eliminar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} borrado exitoso!"
-                    },
-                    "403": {
-                        "description": "Id vacío"
-                    }
-                }
-            }
-        }
-    },
+    "paths": null,
     "definitions": {
         "models.Antecedente": {
             "title": "Antecedente",
@@ -1422,28 +37,159 @@
                 }
             }
         },
-        "models.MedicinaConsultaFisioterapia": {
-            "title": "MedicinaConsultaFisioterapia",
-            "type": "object"
+        "models.ConsultaFisioterapia": {
+            "title": "ConsultaFisioterapia",
+            "type": "object",
+            "properties": {
+                "Evolucion": {
+                    "type": "string"
+                },
+                "IdConsultaFisioterapia": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "IdHojaHistoria": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Motivo_consulta": {
+                    "type": "string"
+                },
+                "Observaciones": {
+                    "type": "string"
+                },
+                "PlanManejo": {
+                    "type": "string"
+                },
+                "Valoracion": {
+                    "type": "string"
+                }
+            }
         },
-        "models.MedicinaDiagnostico": {
-            "title": "MedicinaDiagnostico",
-            "type": "object"
+        "models.Diagnostico": {
+            "title": "Diagnostico",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "Analisis": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "IdDiagnostico": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "Numero": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "PlanManejo": {
+                    "type": "string"
+                }
+            }
         },
-        "models.MedicinaExamen": {
-            "title": "MedicinaExamen",
-            "type": "object"
+        "models.Examen": {
+            "title": "Examen",
+            "type": "object",
+            "properties": {
+                "FechaExamen": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "IdExamen": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "IdHojaHistoria": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "IdTipoExamen": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "Observacion": {
+                    "type": "string"
+                }
+            }
         },
-        "models.MedicinaHistoriaClinica": {
-            "title": "MedicinaHistoriaClinica",
-            "type": "object"
+        "models.HistoriaClinica": {
+            "title": "HistoriaClinica",
+            "type": "object",
+            "properties": {
+                "IdHistoriaClinica": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "IdTercero": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
         },
-        "models.MedicinaHojaHistoria": {
-            "title": "MedicinaHojaHistoria",
-            "type": "object"
+        "models.HojaHistoria": {
+            "title": "HojaHistoria",
+            "type": "object",
+            "properties": {
+                "Evolucion": {
+                    "type": "string"
+                },
+                "FechaConsulta": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "IdDiagnostico": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "IdEspecialidad": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "IdHistoriaClinica": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "IdHojaHistoria": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "IdPersona": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "IdProfesional": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Motivo": {
+                    "type": "string"
+                },
+                "Observacion": {
+                    "type": "string"
+                }
+            }
         },
-        "models.MedicinaSistemas": {
-            "title": "MedicinaSistemas",
+        "models.Sistemas": {
+            "title": "Sistemas",
             "type": "object",
             "properties": {
                 "IdHojaHistoria": {
@@ -1462,13 +208,45 @@
                 }
             }
         },
-        "models.MedicinaTipoAntecedente": {
-            "title": "MedicinaTipoAntecedente",
-            "type": "object"
+        "models.TipoAntecedente": {
+            "title": "TipoAntecedente",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "IdTipoAntecedente": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                }
+            }
         },
-        "models.MedicinaTipoExamen": {
-            "title": "MedicinaTipoExamen",
-            "type": "object"
+        "models.TipoExamen": {
+            "title": "TipoExamen",
+            "type": "object",
+            "properties": {
+                "IdTipoExamen": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                }
+            }
         }
     }
 }

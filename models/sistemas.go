@@ -9,45 +9,45 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type MedicinaSistemas struct {
+type Sistemas struct {
 	IdSistema      int    `orm:"column(id_sistema);pk;auto"`
 	NombreSistema  string `orm:"column(nombre_sistema);null"`
 	Observacion    string `orm:"column(observacion);null"`
 	IdHojaHistoria *int   `orm:"column(id_hoja_historia);rel(fk);null"`
 }
 
-func (p *MedicinaSistemas) TableName() string {
+func (p *Sistemas) TableName() string {
 	return "sistemas"
 }
 func init() {
-	orm.RegisterModel(new(MedicinaSistemas))
+	orm.RegisterModel(new(Sistemas))
 }
 
-// AddMedicinaSistemas inserta un registro en la tabla sistemas
+// AddSistemas inserta un registro en la tabla sistemas
 // Último registro insertado con éxito
-func AddMedicinaSistemas(m *MedicinaSistemas) (id int64, err error) {
+func AddSistemas(m *Sistemas) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetMedicinaSistemasById obtiene un registro de la tabla sistemas por su id
+// GetSistemasById obtiene un registro de la tabla sistemas por su id
 // Id no existe
-func GetMedicinaSistemasById(id int) (v *MedicinaSistemas, err error) {
+func GetSistemasById(id int) (v *Sistemas, err error) {
 	o := orm.NewOrm()
-	v = &MedicinaSistemas{IdSistema: id}
+	v = &Sistemas{IdSistema: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllMedicinaSistemas obtiene todos los registros de la tabla sistemas
+// GetAllSistemas obtiene todos los registros de la tabla sistemas
 // No existen registros
-func GetAllMedicinaSistemas(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllSistemas(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(MedicinaSistemas))
+	qs := o.QueryTable(new(Sistemas))
 	for k, v := range query {
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
@@ -91,7 +91,7 @@ func GetAllMedicinaSistemas(query map[string]string, fields []string, sortby []s
 			return nil, errors.New("error: campos de 'order' no utilizados")
 		}
 	}
-	var l []MedicinaSistemas
+	var l []Sistemas
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -113,11 +113,11 @@ func GetAllMedicinaSistemas(query map[string]string, fields []string, sortby []s
 	return nil, err
 }
 
-// UpdateMedicinaSistemas actualiza un registro de la tabla sistemas
+// UpdateSistemas actualiza un registro de la tabla sistemas
 // El registro a actualizar no existe
-func UpdateMedicinaSistemas(m *MedicinaSistemas) (err error) {
+func UpdateSistemas(m *Sistemas) (err error) {
 	o := orm.NewOrm()
-	v := MedicinaSistemas{IdSistema: m.IdSistema}
+	v := Sistemas{IdSistema: m.IdSistema}
 	if err = o.Read(&v); err == nil {
 		var num int64
 		if num, err = o.Update(m); err == nil {
@@ -127,14 +127,14 @@ func UpdateMedicinaSistemas(m *MedicinaSistemas) (err error) {
 	return
 }
 
-// DeleteMedicinaSistemas elimina un registro de la tabla sistemas
+// DeleteSistemas elimina un registro de la tabla sistemas
 // El registro a eliminar no existe
-func DeleteMedicinaSistemas(id int) (err error) {
+func DeleteSistemas(id int) (err error) {
 	o := orm.NewOrm()
-	v := MedicinaSistemas{IdSistema: id}
+	v := Sistemas{IdSistema: id}
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&MedicinaSistemas{IdSistema: id}); err == nil {
+		if num, err = o.Delete(&Sistemas{IdSistema: id}); err == nil {
 			fmt.Println("Numero de registros eliminados:", num)
 		}
 	}

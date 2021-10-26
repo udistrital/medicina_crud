@@ -11,12 +11,12 @@ import (
 	"github.com/astaxie/beego"
 )
 
-type MedicinaDiagnosticoController struct {
+type HojaHistoriaController struct {
 	beego.Controller
 }
 
 //URLMapping ...
-func (c *MedicinaDiagnosticoController) URLMapping() {
+func (c *HojaHistoriaController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -26,15 +26,15 @@ func (c *MedicinaDiagnosticoController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description agregar un registro en la tabla MedicinaDiagnostico
-// @Param	body		body 	models.MedicinaDiagnostico	true		"Cuerpo para el contenido de MedicinaConsultaFisioterapia"
-// @Success 201 {int} models.MedicinaDiagnostico
+// @Description agregar un registro en la tabla HojaHistoria
+// @Param	body		body 	models.HojaHistoria	true		"Cuerpo para el contenido de ConsultaFisioterapia"
+// @Success 201 {int} models.HojaHistoria
 // @Failure 403 Cuerpo Vacío
 // @router / [post]
-func (c *MedicinaDiagnosticoController) Post() {
-	var v models.MedicinaDiagnostico
+func (c *HojaHistoriaController) Post() {
+	var v models.HojaHistoria
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddMedicinaDiagnostico(&v); err == nil {
+		if _, err := models.AddHojaHistoria(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -48,15 +48,15 @@ func (c *MedicinaDiagnosticoController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description consultar un registro de la tabla MedicinaDiagnostico por su id
+// @Description consultar un registro de la tabla HojaHistoria por su id
 // @Param	id		path 	string	true		"Id a consultar"
-// @Success 200 {object} models.MedicinaDiagnostico
+// @Success 200 {object} models.HojaHistoria
 // @Failure 403 :id está vacío
 // @router /:id [get]
-func (c *MedicinaDiagnosticoController) GetOne() {
+func (c *HojaHistoriaController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetMedicinaDiagnosticoById(id)
+	v, err := models.GetHojaHistoriaById(id)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -67,17 +67,17 @@ func (c *MedicinaDiagnosticoController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description consulta todos los registros de la tabla MedicinaDiagnostico
+// @Description consulta todos los registros de la tabla HojaHistoria
 // @Param   query   consulta    string  false   "Filtro. Por ejemplo, col1: v1, col2: v2 ..."
 // @Param   fields  consulta    string  false   "Campos devueltos. Por ejemplo, col1, col2 ..."
 // @Param   sortby  consulta    string  false   "Campos ordenados por. Por ejemplo, Col1, col2 ..."
 // @Param   order   consulta    string  false   "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ..."
 // @Param   limit   consulta    string  false   "Limite el tamaño del conjunto de resultados. Debe ser un número entero"
 // @Param   offset  consulta    string  false   "Posición inicial del conjunto de resultados. Debe ser un número entero"
-// @Success 200 {object} models.MedicinaDiagnostico
+// @Success 200 {object} models.HojaHistoria
 // @Failure 403
 // @router / [get]
-func (c *MedicinaDiagnosticoController) GetAll() {
+func (c *HojaHistoriaController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -118,7 +118,7 @@ func (c *MedicinaDiagnosticoController) GetAll() {
 			query[k] = v
 		}
 	}
-	l, err := models.GetAllMedicinaDiagnostico(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllHojaHistoria(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -129,18 +129,18 @@ func (c *MedicinaDiagnosticoController) GetAll() {
 
 //Put ...
 // @Title Put
-// @Description actualizar un registro de la tabla MedicinaDiagnostico
+// @Description actualizar un registro de la tabla HojaHistoria
 // @Param	id		path 	string	true		"Id del registro a actualizar"
-// @Param	body		body 	models.MedicinaDiagnostico	true		"Cuerpo para el contenido de MedicinaConsultaFisioterapia"
-// @Success 200 {object} models.MedicinaDiagnostico
+// @Param	body		body 	models.HojaHistoria	true		"Cuerpo para el contenido de ConsultaFisioterapia"
+// @Success 200 {object} models.HojaHistoria
 // @Failure 403 :id no es entero
 // @router /:id [put]
-func (c *MedicinaDiagnosticoController) Put() {
+func (c *HojaHistoriaController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.MedicinaDiagnostico{IdDiagnosticoMedicina: id}
+	v := models.HojaHistoria{IdHojaHistoria: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateMedicinaDiagnostico(&v); err == nil {
+		if err := models.UpdateHojaHistoria(&v); err == nil {
 			c.Data["json"] = "OK"
 		} else {
 			c.Data["json"] = err.Error()
@@ -153,15 +153,15 @@ func (c *MedicinaDiagnosticoController) Put() {
 
 //Delete ...
 // @Title Delete
-// @Description elimina un registro de la tabla MedicinaDiagnostico
+// @Description elimina un registro de la tabla HojaHistoria
 // @Param	id		path 	string	true		"Id del registro a eliminar"
 // @Success 200 {string} borrado exitoso!
 // @Failure 403 Id vacío
 // @router /:id [delete]
-func (c *MedicinaDiagnosticoController) Delete() {
+func (c *HojaHistoriaController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteMedicinaDiagnostico(id); err == nil {
+	if err := models.DeleteHojaHistoria(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()

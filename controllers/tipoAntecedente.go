@@ -11,12 +11,12 @@ import (
 	"github.com/astaxie/beego"
 )
 
-type MedicinaTipoAntecedenteController struct {
+type TipoAntecedenteController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *MedicinaTipoAntecedenteController) URLMapping() {
+func (c *TipoAntecedenteController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -26,15 +26,15 @@ func (c *MedicinaTipoAntecedenteController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description agregar un registro en la tabla MedicinaTipoAntecedente
-// @Param	body		body 	models.MedicinaTipoAntecedente	true		"Cuerpo para el contenido de MedicinaTipoAntecedente"
-// @Success 201 {int} models.MedicinaTipoAntecedente
+// @Description agregar un registro en la tabla TipoAntecedente
+// @Param	body		body 	models.TipoAntecedente	true		"Cuerpo para el contenido de TipoAntecedente"
+// @Success 201 {int} models.TipoAntecedente
 // @Failure 403 Cuerpo Vacío
 // @router / [post]
-func (c *MedicinaTipoAntecedenteController) Post() {
-	var v models.MedicinaTipoAntecedente
+func (c *TipoAntecedenteController) Post() {
+	var v models.TipoAntecedente
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddMedicinaTipoAntecedente(&v); err == nil {
+		if _, err := models.AddTipoAntecedente(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -48,15 +48,15 @@ func (c *MedicinaTipoAntecedenteController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description consultar un registro de la tabla MedicinaTipoAntecedente por su id
+// @Description consultar un registro de la tabla TipoAntecedente por su id
 // @Param	id		path 	string	true		"Id a consultar"
-// @Success 200 {object} models.MedicinaTipoAntecedente
+// @Success 200 {object} models.TipoAntecedente
 // @Failure 403 :id está vacío
 // @router /:id [get]
-func (c *MedicinaTipoAntecedenteController) GetOne() {
+func (c *TipoAntecedenteController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetMedicinaTipoAntecedenteById(id)
+	v, err := models.GetTipoAntecedenteById(id)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -67,17 +67,17 @@ func (c *MedicinaTipoAntecedenteController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description consulta todos los registros de la tabla MedicinaTipoAntecedente
+// @Description consulta todos los registros de la tabla TipoAntecedente
 // @Param   query   consulta    string  false   "Filtro. Por ejemplo, col1: v1, col2: v2 ..."
 // @Param   fields  consulta    string  false   "Campos devueltos. Por ejemplo, col1, col2 ..."
 // @Param   sortby  consulta    string  false   "Campos ordenados por. Por ejemplo, Col1, col2 ..."
 // @Param   order   consulta    string  false   "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ..."
 // @Param   limit   consulta    string  false   "Limite el tamaño del conjunto de resultados. Debe ser un número entero"
 // @Param   offset  consulta    string  false   "Posición inicial del conjunto de resultados. Debe ser un número entero"
-// @Success 200 {object} models.MedicinaTipoAntecedente
+// @Success 200 {object} models.TipoAntecedente
 // @Failure 403
 // @router / [get]
-func (c *MedicinaTipoAntecedenteController) GetAll() {
+func (c *TipoAntecedenteController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -118,7 +118,7 @@ func (c *MedicinaTipoAntecedenteController) GetAll() {
 			query[k] = v
 		}
 	}
-	l, err := models.GetAllMedicinaTipoAntecedente(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllTipoAntecedente(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -129,18 +129,18 @@ func (c *MedicinaTipoAntecedenteController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description actualizar un registro de la tabla MedicinaTipoAntecedente
+// @Description actualizar un registro de la tabla TipoAntecedente
 // @Param	id		path 	string	true		"Id del registro a actualizar"
-// @Param	body		body 	models.MedicinaTipoAntecedente	true		"Cuerpo para el contenido de MedicinaTipoAntecedente"
-// @Success 200 {object} models.MedicinaTipoAntecedente
+// @Param	body		body 	models.TipoAntecedente	true		"Cuerpo para el contenido de TipoAntecedente"
+// @Success 200 {object} models.TipoAntecedente
 // @Failure 403 :id no es entero
 // @router /:id [put]
-func (c *MedicinaTipoAntecedenteController) Put() {
+func (c *TipoAntecedenteController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.MedicinaTipoAntecedente{IdTipoAntecedente: id}
+	v := models.TipoAntecedente{IdTipoAntecedente: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateMedicinaTipoAntecedente(&v); err == nil {
+		if err := models.UpdateTipoAntecedente(&v); err == nil {
 			c.Data["json"] = "OK"
 		} else {
 			c.Data["json"] = err.Error()
@@ -153,15 +153,15 @@ func (c *MedicinaTipoAntecedenteController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description elimina un registro de la tabla MedicinaTipoAntecedente
+// @Description elimina un registro de la tabla TipoAntecedente
 // @Param	id		path 	string	true		"Id del registro a eliminar"
 // @Success 200 {string} borrado exitoso!
 // @Failure 403 Id vacío
 // @router /:id [delete]
-func (c *MedicinaTipoAntecedenteController) Delete() {
+func (c *TipoAntecedenteController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteMedicinaTipoAntecedente(id); err == nil {
+	if err := models.DeleteTipoAntecedente(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()
