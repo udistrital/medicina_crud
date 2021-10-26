@@ -1,16 +1,16 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "beego Test API",
-        "description": "beego has a very cool tools to autogenerate documents for your API",
-        "version": "1.0.0",
-        "termsOfService": "http://beego.me/",
+        "title": "Medicina",
+        "description": "Api para Medicina dentro del módulo de Salud del proyecto SIBUD",
+        "version": "1.0",
+        "termsOfService": "http://www.udistrital.edu.co/politicas-de-privacidad.pdf",
         "contact": {
-            "email": "astaxie@gmail.com"
+            "email": "baluist@correo.udistrital.edu.co"
         },
         "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+            "name": "BSD-3-Clause",
+            "url": "http://opensource.org/licenses/BSD-3-Clause"
         }
     },
     "basePath": "/v1",
@@ -1583,12 +1583,10 @@
                     "format": "int64"
                 },
                 "IdHistoriaClinica": {
-                    "type": "integer",
-                    "format": "int64"
+                    "$ref": "#/definitions/models.HistoriaClinica"
                 },
                 "IdTipoAntecedente": {
-                    "type": "integer",
-                    "format": "int64"
+                    "$ref": "#/definitions/models.TipoAntecedente"
                 },
                 "Observaciones": {
                     "type": "string"
@@ -1607,8 +1605,7 @@
                     "format": "int64"
                 },
                 "IdHojaHistoria": {
-                    "type": "integer",
-                    "format": "int64"
+                    "$ref": "#/definitions/models.HojaHistoria"
                 },
                 "Motivo_consulta": {
                     "type": "string"
@@ -1656,7 +1653,7 @@
                     "type": "integer",
                     "format": "int64"
                 },
-                "PlanManejo": {
+                "PlanDeManejo": {
                     "type": "string"
                 }
             }
@@ -1674,12 +1671,10 @@
                     "format": "int64"
                 },
                 "IdHojaHistoria": {
-                    "type": "integer",
-                    "format": "int64"
+                    "$ref": "#/definitions/models.HojaHistoria"
                 },
                 "IdTipoExamen": {
-                    "type": "integer",
-                    "format": "int64"
+                    "$ref": "#/definitions/models.TipoExamen"
                 },
                 "Nombre": {
                     "type": "string"
@@ -1715,16 +1710,14 @@
                     "format": "datetime"
                 },
                 "IdDiagnostico": {
-                    "type": "integer",
-                    "format": "int64"
+                    "$ref": "#/definitions/models.Diagnostico"
                 },
                 "IdEspecialidad": {
                     "type": "integer",
                     "format": "int64"
                 },
                 "IdHistoriaClinica": {
-                    "type": "integer",
-                    "format": "int64"
+                    "$ref": "#/definitions/models.HistoriaClinica"
                 },
                 "IdHojaHistoria": {
                     "type": "integer",
@@ -1751,8 +1744,7 @@
             "type": "object",
             "properties": {
                 "IdHojaHistoria": {
-                    "type": "integer",
-                    "format": "int64"
+                    "$ref": "#/definitions/models.HojaHistoria"
                 },
                 "IdSistema": {
                     "type": "integer",

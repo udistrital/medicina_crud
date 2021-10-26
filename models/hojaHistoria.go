@@ -11,16 +11,16 @@ import (
 )
 
 type HojaHistoria struct {
-	IdHojaHistoria    int       `orm:"column(id_hoja_historia);pk;auto"`
-	FechaConsulta     time.Time `orm:"column(fecha_consulta);type(date);null"`
-	Motivo            string    `orm:"column(motivo);null"`
-	IdDiagnostico     *int      `orm:"column(id_diagnostico);rel(fk);null"`
-	Observacion       string    `orm:"column(observacion);null"`
-	Evolucion         string    `orm:"column(evolucion);null"`
-	IdEspecialidad    int       `orm:"column(id_especialidad);null"`
-	IdProfesional     int       `orm:"column(id_profesional);null"`
-	IdHistoriaClinica *int      `orm:"column(id_historia_clinica);rel(fk);null"`
-	IdPersona         int       `orm:"column(id_persona);null"`
+	IdHojaHistoria    int              `orm:"column(id_hoja_historia);pk;auto"`
+	IdHistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
+	IdDiagnostico     *Diagnostico     `orm:"column(id_diagnostico);rel(fk);null"`
+	FechaConsulta     time.Time        `orm:"column(fecha_consulta);type(date);null"`
+	Motivo            string           `orm:"column(motivo);null"`
+	Observacion       string           `orm:"column(observacion);null"`
+	Evolucion         string           `orm:"column(evolucion);null"`
+	IdEspecialidad    int              `orm:"column(id_especialidad);null"`
+	IdProfesional     int              `orm:"column(id_profesional);null"`
+	IdPersona         int              `orm:"column(id_persona);null"`
 }
 
 func (t *HojaHistoria) TableName() string {

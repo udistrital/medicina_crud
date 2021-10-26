@@ -12,14 +12,14 @@ import (
 )
 
 type Diagnostico struct {
-	IdDiagnostico     int       `orm:"column(id_diagnostico_);pk;auto"`
+	IdDiagnostico     int       `orm:"column(id_diagnostico);pk;auto"`
 	Nombre            string    `orm:"column(nombre);null"`
 	Descripcion       string    `orm:"column(descripcion);null"`
 	Numero            int       `orm:"column(numero);null"`
 	Activo            bool      `orm:"column(activo);null"`
 	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(date)"`
 	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(date)"`
-	PlanManejo        string    `orm:"column(plan_manejo);null"`
+	PlanDeManejo      string    `orm:"column(plan_de_manejo);null"`
 	Analisis          string    `orm:"column(analisis);null"`
 }
 
