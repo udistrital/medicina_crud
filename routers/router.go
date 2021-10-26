@@ -15,46 +15,46 @@ import (
 
 func init() {
 	ns := beego.NewNamespace("/v1",
-		beego.NSNamespace("/medicinaAntecedente",
+		beego.NSNamespace("/Antecedente",
 			beego.NSInclude(
-				&controllers.MedicinaAntecedenteController{},
+				&controllers.AntecedenteController{},
 			),
 		),
-		beego.NSNamespace("/medicinaConsultaFisioterapia",
+		beego.NSNamespace("/ConsultaFisioterapia",
 			beego.NSInclude(
-				&controllers.MedicinaConsultaFisioterapiaController{},
+				&controllers.ConsultaFisioterapiaController{},
 			),
 		),
-		beego.NSNamespace("/medicinaDiagnostico",
+		beego.NSNamespace("/Diagnostico",
 			beego.NSInclude(
-				&controllers.MedicinaDiagnosticoController{},
+				&controllers.DiagnosticoController{},
 			),
 		),
-		beego.NSNamespace("/medicinaExamen",
+		beego.NSNamespace("/Examen",
 			beego.NSInclude(
-				&controllers.MedicinaExamenController{},
+				&controllers.ExamenController{},
 			),
-		), beego.NSNamespace("/medicinaHistoriaClinica",
+		), beego.NSNamespace("/HistoriaClinica",
 			beego.NSInclude(
-				&controllers.MedicinaHistoriaClinicaController{},
+				&controllers.HistoriaClinicaController{},
 			),
-		), beego.NSNamespace("/medicinaHojaHistoria",
+		), beego.NSNamespace("/HojaHistoria",
 			beego.NSInclude(
-				&controllers.MedicinaHojaHistoriaController{},
+				&controllers.HojaHistoriaController{},
 			),
-		), beego.NSNamespace("/medicinaSistemas",
+		), beego.NSNamespace("/Sistemas",
 			beego.NSInclude(
-				&controllers.MedicinaSistemasController{},
-			),
-		),
-		beego.NSNamespace("/medicinaTipoAntecedente",
-			beego.NSInclude(
-				&controllers.MedicinaTipoAntecedenteController{},
+				&controllers.SistemasController{},
 			),
 		),
-		beego.NSNamespace("/medicinaTipoExamen",
+		beego.NSNamespace("/TipoAntecedente",
 			beego.NSInclude(
-				&controllers.MedicinaTipoExamenController{},
+				&controllers.TipoAntecedenteController{},
+			),
+		),
+		beego.NSNamespace("/TipoExamen",
+			beego.NSInclude(
+				&controllers.TipoExamenController{},
 			),
 		),
 	)
