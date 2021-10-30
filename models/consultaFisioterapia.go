@@ -10,13 +10,13 @@ import (
 )
 
 type ConsultaFisioterapia struct {
-	IdConsultaFisioterapia int           `orm:"column(id_consulta_fisioterapia);pk;auto"`
-	IdHojaHistoria         *HojaHistoria `orm:"column(id_hoja_historia);rel(fk);null"`
-	Motivo_consulta        string        `orm:"column(motivo_consulta);null"`
-	Valoracion             string        `orm:"column(valoracion);null"`
-	PlanManejo             string        `orm:"column(plan_manejo);null"`
-	Evolucion              string        `orm:"column(evolucion);null"`
-	Observaciones          string        `orm:"column(observaciones);null"`
+	IdConsultaFisioterapia int           	`orm:"column(id_consulta_fisioterapia);pk;auto"`
+	IdHojaHistoria         *HojaHistoria 	`orm:"column(id_hoja_historia);rel(fk);null"`
+	Motivo_consulta        string        	`orm:"column(motivo_consulta);null"`
+	Valoracion             string        	`orm:"column(valoracion);null"`
+	PlanManejo             string        	`orm:"column(plan_manejo);null"`
+	Evolucion              []string        	`orm:"column(evolucion);null"`
+	Observaciones          string        	`orm:"column(observaciones);null"`
 }
 
 func (t *ConsultaFisioterapia) TableName() string {

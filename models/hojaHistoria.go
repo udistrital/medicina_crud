@@ -17,7 +17,7 @@ type HojaHistoria struct {
 	FechaConsulta     time.Time        `orm:"column(fecha_consulta);type(date);null"`
 	Motivo            string           `orm:"column(motivo);null"`
 	Observacion       string           `orm:"column(observacion);null"`
-	Evolucion         string           `orm:"column(evolucion);null"`
+	Evolucion         []string         `orm:"column(evolucion);null"`
 	IdEspecialidad    int              `orm:"column(id_especialidad);null"`
 	IdProfesional     int              `orm:"column(id_profesional);null"`
 	IdPersona         int              `orm:"column(id_persona);null"`
