@@ -1724,12 +1724,12 @@
                     "format": "int64"
                 },
                 "IdPersona": {
-                    "type": "integer",
-                    "format": "int64"
+                    "type": "number",
+                    "format": "double"
                 },
                 "IdProfesional": {
-                    "type": "integer",
-                    "format": "int64"
+                    "type": "number",
+                    "format": "double"
                 },
                 "Motivo": {
                     "type": "string"

@@ -12,15 +12,15 @@ import (
 )
 
 type Diagnostico struct {
-	IdDiagnostico     int       `orm:"column(id_diagnostico);pk;auto"`
-	Nombre            string    `orm:"column(nombre);null"`
-	Descripcion       string    `orm:"column(descripcion);null"`
-	Numero            int       `orm:"column(numero);null"`
-	Activo            bool      `orm:"column(activo);null"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(date)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(date)"`
-	PlanDeManejo      string    `orm:"column(plan_de_manejo);null"`
-	Analisis          string    `orm:"column(analisis);null"`
+	IdDiagnostico     int        `orm:"column(id_diagnostico);pk;auto"`
+	Nombre            string     `orm:"column(nombre);null"`
+	Descripcion       string     `orm:"column(descripcion);null"`
+	Numero            int        `orm:"column(numero);null"`
+	Activo            bool       `orm:"column(activo);null"`
+	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	PlanDeManejo      string     `orm:"column(plan_de_manejo);null"`
+	Analisis          string     `orm:"column(analisis);null"`
 }
 
 func (t *Diagnostico) TableName() string {

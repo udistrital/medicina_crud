@@ -16,7 +16,7 @@ type Examen struct {
 	IdTipoExamen   *TipoExamen   `orm:"column(id_tipo_examen);rel(fk);null"`
 	Nombre         string        `orm:"column(nombre);null"`
 	Observacion    string        `orm:"column(observacion);null"`
-	FechaExamen    time.Time     `orm:"column(fecha_examen);type(date);null"`
+	FechaExamen    *time.Time    `orm:"column(fecha_examen);type(timestamp without time zone);null"`
 }
 
 func (t *Examen) TableName() string {
