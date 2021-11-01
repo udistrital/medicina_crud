@@ -9,6 +9,7 @@ import (
 	"Medicina/models"
 
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
 )
 
 type HojaHistoriaController struct {
@@ -118,10 +119,16 @@ func (c *HojaHistoriaController) GetAll() {
 			query[k] = v
 		}
 	}
+
 	l, err := models.GetAllHojaHistoria(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		c.Data["system"] = err
+		c.Abort("404")
 	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
 		c.Data["json"] = l
 	}
 	c.ServeJSON()
