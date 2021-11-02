@@ -18,27 +18,27 @@ paths:
       description: consulta todos los registros de la tabla Antecedente
       operationId: AntecedenteController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -132,27 +132,27 @@ paths:
       description: consulta todos los registros de la tabla ConsultaFisioterapia
       operationId: ConsultaFisioterapiaController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -246,27 +246,27 @@ paths:
       description: consulta todos los registros de la tabla Diagnostico
       operationId: DiagnosticoController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -360,27 +360,27 @@ paths:
       description: consulta todos los registros de la tabla Examen
       operationId: ExamenController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -474,27 +474,27 @@ paths:
       description: consulta todos los registros de la tabla HistoriaClinica
       operationId: HistoriaClinicaController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -588,27 +588,27 @@ paths:
       description: consulta todos los registros de la tabla HojaHistoria
       operationId: HojaHistoriaController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -627,7 +627,7 @@ paths:
       parameters:
       - in: body
         name: body
-        description: Cuerpo para el contenido de ConsultaFisioterapia
+        description: Cuerpo para el contenido de queryFisioterapia
         required: true
         schema:
           $ref: '#/definitions/models.HojaHistoria'
@@ -640,12 +640,12 @@ paths:
     get:
       tags:
       - HojaHistoria
-      description: consultar un registro de la tabla HojaHistoria por su id
+      description: queryr un registro de la tabla HojaHistoria por su id
       operationId: HojaHistoriaController.Get One
       parameters:
       - in: path
         name: id
-        description: Id a consultar
+        description: Id a queryr
         required: true
         type: string
       responses:
@@ -668,7 +668,7 @@ paths:
         type: string
       - in: body
         name: body
-        description: Cuerpo para el contenido de ConsultaFisioterapia
+        description: Cuerpo para el contenido de queryFisioterapia
         required: true
         schema:
           $ref: '#/definitions/models.HojaHistoria'
@@ -702,27 +702,27 @@ paths:
       description: consulta todos los registros de la tabla Sistemas
       operationId: SistemasController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -816,27 +816,27 @@ paths:
       description: consulta todos los registros de la tabla TipoAntecedente
       operationId: TipoAntecedenteController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string

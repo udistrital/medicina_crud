@@ -54,10 +54,8 @@ func GetHojaHistoriaById(id int) (v *HojaHistoria, err error) {
 func GetAllHojaHistoria(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(HojaHistoria)).RelatedSel()
-	// query k=v
+	qs := o.QueryTable(new(HojaHistoria))
 	for k, v := range query {
-		// rewrite dot-notation to Object__Attribute
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
 			qs = qs.Filter(k, (v == "true" || v == "1"))
@@ -65,11 +63,9 @@ func GetAllHojaHistoria(query map[string]string, fields []string, sortby []strin
 			qs = qs.Filter(k, v)
 		}
 	}
-	// order by:
 	var sortFields []string
 	if len(sortby) != 0 {
 		if len(sortby) == len(order) {
-			// 1) for each sort field, there is an associated order
 			for i, v := range sortby {
 				orderby := ""
 				if order[i] == "desc" {
@@ -77,13 +73,12 @@ func GetAllHojaHistoria(query map[string]string, fields []string, sortby []strin
 				} else if order[i] == "asc" {
 					orderby = v
 				} else {
-					return nil, errors.New("Error: Invalid order. Must be either [asc|desc]")
+					return nil, errors.New("error: Orden inválido, debe ser del tipo [asc|desc]")
 				}
 				sortFields = append(sortFields, orderby)
 			}
 			qs = qs.OrderBy(sortFields...)
 		} else if len(sortby) != len(order) && len(order) == 1 {
-			// 2) there is exactly one order, all the sorted fields will be sorted by this order
 			for _, v := range sortby {
 				orderby := ""
 				if order[0] == "desc" {
@@ -91,19 +86,18 @@ func GetAllHojaHistoria(query map[string]string, fields []string, sortby []strin
 				} else if order[0] == "asc" {
 					orderby = v
 				} else {
-					return nil, errors.New("Error: Invalid order. Must be either [asc|desc]")
+					return nil, errors.New("error: Orden inválido, debe ser del tipo [asc|desc]")
 				}
 				sortFields = append(sortFields, orderby)
 			}
 		} else if len(sortby) != len(order) && len(order) != 1 {
-			return nil, errors.New("Error: 'sortby', 'order' sizes mismatch or 'order' size is not 1")
+			return nil, errors.New("error: los tamaños de 'sortby', 'order' no coinciden o el tamaño de 'order' no es 1")
 		}
 	} else {
 		if len(order) != 0 {
-			return nil, errors.New("Error: unused 'order' fields")
+			return nil, errors.New("error: campos de 'order' no utilizados")
 		}
 	}
-
 	var l []HojaHistoria
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
@@ -112,7 +106,6 @@ func GetAllHojaHistoria(query map[string]string, fields []string, sortby []strin
 				ml = append(ml, v)
 			}
 		} else {
-			// trim unused fields
 			for _, v := range l {
 				m := make(map[string]interface{})
 				val := reflect.ValueOf(v)

@@ -68,12 +68,12 @@ func (c *DiagnosticoController) GetOne() {
 // GetAll ...
 // @Title Get All
 // @Description consulta todos los registros de la tabla Diagnostico
-// @Param   query   consulta    string  false   "Filtro. Por ejemplo, col1: v1, col2: v2 ..."
-// @Param   fields  consulta    string  false   "Campos devueltos. Por ejemplo, col1, col2 ..."
-// @Param   sortby  consulta    string  false   "Campos ordenados por. Por ejemplo, Col1, col2 ..."
-// @Param   order   consulta    string  false   "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ..."
-// @Param   limit   consulta    string  false   "Limite el tamaño del conjunto de resultados. Debe ser un número entero"
-// @Param   offset  consulta    string  false   "Posición inicial del conjunto de resultados. Debe ser un número entero"
+// @Param   query   query    string  false   "Filtro. Por ejemplo, col1: v1, col2: v2 ..."
+// @Param   fields  query    string  false   "Campos devueltos. Por ejemplo, col1, col2 ..."
+// @Param   sortby  query    string  false   "Campos ordenados por. Por ejemplo, Col1, col2 ..."
+// @Param   order   query    string  false   "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ..."
+// @Param   limit   query    string  false   "Limite el tamaño del conjunto de resultados. Debe ser un número entero"
+// @Param   offset  query    string  false   "Posición inicial del conjunto de resultados. Debe ser un número entero"
 // @Success 200 {object} models.Diagnostico
 // @Failure 403
 // @router / [get]
