@@ -138,7 +138,7 @@ func (c *HistoriaClinicaController) GetAll() {
 func (c *HistoriaClinicaController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.HistoriaClinica{IdHistoriaClinica: id}
+	v := models.HistoriaClinica{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateHistoriaClinica(&v); err == nil {
 			c.Data["json"] = "OK"

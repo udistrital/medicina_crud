@@ -12,15 +12,16 @@ import (
 )
 
 type Diagnostico struct {
-	IdDiagnostico     int        `orm:"column(id_diagnostico);pk;auto"`
-	Nombre            string     `orm:"column(nombre);null"`
-	Descripcion       string     `orm:"column(descripcion);null"`
-	Numero            int        `orm:"column(numero);null"`
-	Activo            bool       `orm:"column(activo);null"`
-	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
-	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
-	PlanDeManejo      string     `orm:"column(plan_de_manejo);null"`
-	Analisis          string     `orm:"column(analisis);null"`
+	Id                int              `orm:"column(id_diagnostico);pk;auto"`
+	Nombre            string           `orm:"column(nombre);null"`
+	Descripcion       string           `orm:"column(descripcion);null"`
+	Activo            bool             `orm:"column(activo);null"`
+	FechaCreacion     *time.Time       `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion *time.Time       `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	PlanDeManejo      string           `orm:"column(plan_de_manejo);null"`
+	Analisis          string           `orm:"column(analisis);null"`
+	HojaHistoria      *HojaHistoria    `orm:"column(id_hoja_historia);rel(fk)"`
+	HistoriaClinica   *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk)"`
 }
 
 func (t *Diagnostico) TableName() string {
@@ -42,7 +43,7 @@ func AddDiagnostico(m *Diagnostico) (id int64, err error) {
 // Id no existe
 func GetDiagnosticoById(id int) (v *Diagnostico, err error) {
 	o := orm.NewOrm()
-	v = &Diagnostico{IdDiagnostico: id}
+	v = &Diagnostico{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
@@ -124,7 +125,7 @@ func GetAllDiagnostico(query map[string]string, fields []string, sortby []string
 // El registro a actualizar no existe
 func UpdateDiagnostico(m *Diagnostico) (err error) {
 	o := orm.NewOrm()
-	v := Diagnostico{IdDiagnostico: m.IdDiagnostico}
+	v := Diagnostico{Id: m.Id}
 	if err = o.Read(&v); err == nil {
 		var num int64
 		if num, err = o.Update(m); err == nil {
@@ -138,11 +139,11 @@ func UpdateDiagnostico(m *Diagnostico) (err error) {
 // El registro a eliminar no existe
 func DeleteDiagnostico(id int) (err error) {
 	o := orm.NewOrm()
-	v := Diagnostico{IdDiagnostico: id}
+	v := Diagnostico{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&Diagnostico{IdDiagnostico: id}); err == nil {
+		if num, err = o.Delete(&Diagnostico{Id: id}); err == nil {
 			fmt.Println("Numero de registros eliminados:", num)
 		}
 	}

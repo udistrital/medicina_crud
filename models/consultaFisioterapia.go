@@ -10,13 +10,14 @@ import (
 )
 
 type ConsultaFisioterapia struct {
-	IdConsultaFisioterapia int           `orm:"column(id_consulta_fisioterapia);pk;auto"`
-	IdHojaHistoria         *HojaHistoria `orm:"column(id_hoja_historia);rel(fk);null"`
-	Motivo_consulta        string        `orm:"column(motivo_consulta);null"`
-	Valoracion             string        `orm:"column(valoracion);null"`
-	PlanManejo             string        `orm:"column(plan_manejo);null"`
-	Evolucion              string        `orm:"column(evolucion);type(json);null"`
-	Observaciones          string        `orm:"column(observaciones);null"`
+	Id              int              `orm:"column(id_consulta_fisioterapia);pk;auto"`
+	HistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk)"`
+	HojaHistoria    *HojaHistoria    `orm:"column(id_hoja_historia);rel(fk);null"`
+	MotivoConsulta  string           `orm:"column(motivo_consulta);null"`
+	Valoracion      string           `orm:"column(valoracion);null"`
+	PlanManejo      string           `orm:"column(plan_manejo);null"`
+	Evolucion       string           `orm:"column(evolucion);type(json);null"`
+	Observaciones   string           `orm:"column(observaciones);null"`
 }
 
 func (t *ConsultaFisioterapia) TableName() string {
@@ -38,7 +39,7 @@ func AddConsultaFisioterapia(m *ConsultaFisioterapia) (id int64, err error) {
 // Id no existe
 func GetConsultaFisioterapiaById(id int) (v *ConsultaFisioterapia, err error) {
 	o := orm.NewOrm()
-	v = &ConsultaFisioterapia{IdConsultaFisioterapia: id}
+	v = &ConsultaFisioterapia{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
@@ -120,7 +121,7 @@ func GetAllConsultaFisioterapia(query map[string]string, fields []string, sortby
 // El registro a actualizar no existe
 func UpdateConsultaFisioterapia(m *ConsultaFisioterapia) (err error) {
 	o := orm.NewOrm()
-	v := ConsultaFisioterapia{IdConsultaFisioterapia: m.IdConsultaFisioterapia}
+	v := ConsultaFisioterapia{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -135,11 +136,11 @@ func UpdateConsultaFisioterapia(m *ConsultaFisioterapia) (err error) {
 // El registro a eliminar no existe
 func DeleteConsultaFisioterapia(id int) (err error) {
 	o := orm.NewOrm()
-	v := ConsultaFisioterapia{IdConsultaFisioterapia: id}
+	v := ConsultaFisioterapia{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&ConsultaFisioterapia{IdConsultaFisioterapia: id}); err == nil {
+		if num, err = o.Delete(&ConsultaFisioterapia{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

@@ -138,7 +138,7 @@ func (c *AntecedenteController) GetAll() {
 func (c *AntecedenteController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.Antecedente{IdAntecedente: id}
+	v := models.Antecedente{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateAntecedente(&v); err == nil {
 			c.Data["json"] = "OK"

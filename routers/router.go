@@ -43,9 +43,9 @@ func init() {
 			beego.NSInclude(
 				&controllers.HojaHistoriaController{},
 			),
-		), beego.NSNamespace("/Sistemas",
+		), beego.NSNamespace("/Sistema",
 			beego.NSInclude(
-				&controllers.SistemasController{},
+				&controllers.SistemaController{},
 			),
 		),
 		beego.NSNamespace("/TipoAntecedente",

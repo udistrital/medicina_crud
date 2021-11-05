@@ -695,12 +695,12 @@ paths:
           description: '{string} borrado exitoso!'
         "403":
           description: Id vacío
-  /Sistemas/:
+  /Sistema/:
     get:
       tags:
-      - Sistemas
-      description: consulta todos los registros de la tabla Sistemas
-      operationId: SistemasController.Get All
+      - Sistema
+      description: consulta todos los registros de la tabla Sistema
+      operationId: SistemaController.Get All
       parameters:
       - in: query
         name: query
@@ -730,32 +730,32 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Sistemas'
+            $ref: '#/definitions/models.Sistema'
         "403":
           description: ""
     post:
       tags:
-      - Sistemas
-      description: agregar un registro en la tabla Sistemas
-      operationId: SistemasController.Post
+      - Sistema
+      description: agregar un registro en la tabla Sistema
+      operationId: SistemaController.Post
       parameters:
       - in: body
         name: body
-        description: Cuerpo para el contenido de Sistemas
+        description: Cuerpo para el contenido de Sistema
         required: true
         schema:
-          $ref: '#/definitions/models.Sistemas'
+          $ref: '#/definitions/models.Sistema'
       responses:
         "201":
-          description: '{int} models.Sistemas'
+          description: '{int} models.Sistema'
         "403":
           description: Cuerpo Vacío
-  /Sistemas/{id}:
+  /Sistema/{id}:
     get:
       tags:
-      - Sistemas
-      description: consultar un registro de la tabla Sistemas por su id
-      operationId: SistemasController.Get One
+      - Sistema
+      description: consultar un registro de la tabla Sistema por su id
+      operationId: SistemaController.Get One
       parameters:
       - in: path
         name: id
@@ -766,14 +766,14 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Sistemas'
+            $ref: '#/definitions/models.Sistema'
         "403":
           description: :id está vacío
     put:
       tags:
-      - Sistemas
-      description: actualizar un registro de la tabla Sistemas
-      operationId: SistemasController.Put
+      - Sistema
+      description: actualizar un registro de la tabla Sistema
+      operationId: SistemaController.Put
       parameters:
       - in: path
         name: id
@@ -782,22 +782,22 @@ paths:
         type: string
       - in: body
         name: body
-        description: Cuerpo para el contenido de Sistemas
+        description: Cuerpo para el contenido de Sistema
         required: true
         schema:
-          $ref: '#/definitions/models.Sistemas'
+          $ref: '#/definitions/models.Sistema'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Sistemas'
+            $ref: '#/definitions/models.Sistema'
         "403":
           description: :id no es entero
     delete:
       tags:
-      - Sistemas
-      description: elimina un registro de la tabla Sistemas
-      operationId: SistemasController.Delete
+      - Sistema
+      description: elimina un registro de la tabla Sistema
+      operationId: SistemaController.Delete
       parameters:
       - in: path
         name: id
@@ -1042,27 +1042,29 @@ definitions:
     title: Antecedente
     type: object
     properties:
-      IdAntecedente:
+      HistoriaClinica:
+        $ref: '#/definitions/models.HistoriaClinica'
+      Id:
         type: integer
         format: int64
-      IdHistoriaClinica:
-        $ref: '#/definitions/models.HistoriaClinica'
-      IdTipoAntecedente:
-        $ref: '#/definitions/models.TipoAntecedente'
       Observaciones:
         type: string
+      TipoAntecedente:
+        $ref: '#/definitions/models.TipoAntecedente'
   models.ConsultaFisioterapia:
     title: ConsultaFisioterapia
     type: object
     properties:
       Evolucion:
         type: string
-      IdConsultaFisioterapia:
+      HistoriaClinica:
+        $ref: '#/definitions/models.HistoriaClinica'
+      HojaHistoria:
+        $ref: '#/definitions/models.HojaHistoria'
+      Id:
         type: integer
         format: int64
-      IdHojaHistoria:
-        $ref: '#/definitions/models.HojaHistoria'
-      Motivo_consulta:
+      MotivoConsulta:
         type: string
       Observaciones:
         type: string
@@ -1086,14 +1088,15 @@ definitions:
       FechaModificacion:
         type: string
         format: datetime
-      IdDiagnostico:
+      HistoriaClinica:
+        $ref: '#/definitions/models.HistoriaClinica'
+      HojaHistoria:
+        $ref: '#/definitions/models.HojaHistoria'
+      Id:
         type: integer
         format: int64
       Nombre:
         type: string
-      Numero:
-        type: integer
-        format: int64
       PlanDeManejo:
         type: string
   models.Examen:
@@ -1103,69 +1106,73 @@ definitions:
       FechaExamen:
         type: string
         format: datetime
-      IdExamen:
+      HistoriaClinica:
+        $ref: '#/definitions/models.HistoriaClinica'
+      HojaHistoria:
+        $ref: '#/definitions/models.HojaHistoria'
+      Id:
         type: integer
         format: int64
-      IdHojaHistoria:
-        $ref: '#/definitions/models.HojaHistoria'
-      IdTipoExamen:
-        $ref: '#/definitions/models.TipoExamen'
       Nombre:
         type: string
       Observacion:
         type: string
+      TipoExamen:
+        $ref: '#/definitions/models.TipoExamen'
   models.HistoriaClinica:
     title: HistoriaClinica
     type: object
     properties:
-      IdHistoriaClinica:
+      Id:
         type: integer
         format: int64
-      IdTercero:
+      Tercero:
         type: integer
         format: int64
   models.HojaHistoria:
     title: HojaHistoria
     type: object
     properties:
+      Diagnostico:
+        $ref: '#/definitions/models.Diagnostico'
+      Especialidad:
+        type: integer
+        format: int64
       Evolucion:
         type: string
       FechaConsulta:
         type: string
         format: datetime
-      IdDiagnostico:
-        $ref: '#/definitions/models.Diagnostico'
-      IdEspecialidad:
-        type: integer
-        format: int64
-      IdHistoriaClinica:
+      HistoriaClinica:
         $ref: '#/definitions/models.HistoriaClinica'
-      IdHojaHistoria:
+      Id:
         type: integer
         format: int64
-      IdPersona:
-        type: number
-        format: double
-      IdProfesional:
-        type: number
-        format: double
       Motivo:
         type: string
       Observacion:
         type: string
-  models.Sistemas:
-    title: Sistemas
+      Persona:
+        type: number
+        format: double
+      Profesional:
+        type: number
+        format: double
+  models.Sistema:
+    title: Sistema
     type: object
     properties:
-      IdHojaHistoria:
+      HistoriaClinica:
+        $ref: '#/definitions/models.HistoriaClinica'
+      HojaHistoria:
         $ref: '#/definitions/models.HojaHistoria'
-      IdSistema:
+      Id:
         type: integer
         format: int64
-      NombreSistema:
-        type: string
       Observacion:
         type: string
+      TipoSistema:
+        $ref: '#/definitions/models.TipoSistema'
   models.TipoAntecedente:
     title: TipoAntecedente
     type: object
@@ -1180,7 +1187,7 @@ definitions:
       FechaModificacion:
         type: string
         format: datetime
-      IdTipoAntecedente:
+      Id:
         type: integer
         format: int64
       Nombre:
@@ -1189,7 +1196,26 @@ definitions:
     title: TipoExamen
     type: object
     properties:
-      IdTipoExamen:
+      Activo:
+        type: boolean
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+  models.TipoSistema:
+    title: TipoSistema
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
         type: integer
         format: int64
       Nombre:

@@ -5,13 +5,16 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
 type TipoExamen struct {
-	IdTipoExamen int    `orm:"column(id_tipo_examen);pk;auto"`
-	Nombre       string `orm:"column(nombre);null"`
+	Id                int        `orm:"column(id_tipo_examen);pk;auto"`
+	Nombre            string     `orm:"column(nombre);null"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	Activo            bool       `orm:"column(activo);null"`
 }
 
 func (p *TipoExamen) TableName() string {
@@ -33,7 +36,7 @@ func AddTipoExamen(m *TipoExamen) (id int64, err error) {
 // Id no existe
 func GetTipoExamenById(id int) (v *TipoExamen, err error) {
 	o := orm.NewOrm()
-	v = &TipoExamen{IdTipoExamen: id}
+	v = &TipoExamen{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
@@ -115,7 +118,7 @@ func GetAllTipoExamen(query map[string]string, fields []string, sortby []string,
 // El registro a actualizar no existe
 func UpdateTipoExamen(m *TipoExamen) (err error) {
 	o := orm.NewOrm()
-	v := TipoExamen{IdTipoExamen: m.IdTipoExamen}
+	v := TipoExamen{Id: m.Id}
 	if err = o.Read(&v); err == nil {
 		var num int64
 		if num, err = o.Update(m); err == nil {
@@ -129,10 +132,10 @@ func UpdateTipoExamen(m *TipoExamen) (err error) {
 // El registro a eliminar no existe
 func DeleteTipoExamen(id int) (err error) {
 	o := orm.NewOrm()
-	v := TipoExamen{IdTipoExamen: id}
+	v := TipoExamen{Id: id}
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&TipoExamen{IdTipoExamen: id}); err == nil {
+		if num, err = o.Delete(&TipoExamen{Id: id}); err == nil {
 			fmt.Println("Numero de registros eliminados:", num)
 		}
 	}

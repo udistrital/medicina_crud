@@ -1053,13 +1053,13 @@
                 }
             }
         },
-        "/Sistemas/": {
+        "/Sistema/": {
             "get": {
                 "tags": [
-                    "Sistemas"
+                    "Sistema"
                 ],
-                "description": "consulta todos los registros de la tabla Sistemas",
-                "operationId": "SistemasController.Get All",
+                "description": "consulta todos los registros de la tabla Sistema",
+                "operationId": "SistemaController.Get All",
                 "parameters": [
                     {
                         "in": "query",
@@ -1102,7 +1102,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.Sistemas"
+                            "$ref": "#/definitions/models.Sistema"
                         }
                     },
                     "403": {
@@ -1112,24 +1112,24 @@
             },
             "post": {
                 "tags": [
-                    "Sistemas"
+                    "Sistema"
                 ],
-                "description": "agregar un registro en la tabla Sistemas",
-                "operationId": "SistemasController.Post",
+                "description": "agregar un registro en la tabla Sistema",
+                "operationId": "SistemaController.Post",
                 "parameters": [
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "Cuerpo para el contenido de Sistemas",
+                        "description": "Cuerpo para el contenido de Sistema",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.Sistemas"
+                            "$ref": "#/definitions/models.Sistema"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.Sistemas"
+                        "description": "{int} models.Sistema"
                     },
                     "403": {
                         "description": "Cuerpo Vacío"
@@ -1137,13 +1137,13 @@
                 }
             }
         },
-        "/Sistemas/{id}": {
+        "/Sistema/{id}": {
             "get": {
                 "tags": [
-                    "Sistemas"
+                    "Sistema"
                 ],
-                "description": "consultar un registro de la tabla Sistemas por su id",
-                "operationId": "SistemasController.Get One",
+                "description": "consultar un registro de la tabla Sistema por su id",
+                "operationId": "SistemaController.Get One",
                 "parameters": [
                     {
                         "in": "path",
@@ -1157,7 +1157,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.Sistemas"
+                            "$ref": "#/definitions/models.Sistema"
                         }
                     },
                     "403": {
@@ -1167,10 +1167,10 @@
             },
             "put": {
                 "tags": [
-                    "Sistemas"
+                    "Sistema"
                 ],
-                "description": "actualizar un registro de la tabla Sistemas",
-                "operationId": "SistemasController.Put",
+                "description": "actualizar un registro de la tabla Sistema",
+                "operationId": "SistemaController.Put",
                 "parameters": [
                     {
                         "in": "path",
@@ -1182,10 +1182,10 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "Cuerpo para el contenido de Sistemas",
+                        "description": "Cuerpo para el contenido de Sistema",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.Sistemas"
+                            "$ref": "#/definitions/models.Sistema"
                         }
                     }
                 ],
@@ -1193,7 +1193,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.Sistemas"
+                            "$ref": "#/definitions/models.Sistema"
                         }
                     },
                     "403": {
@@ -1203,10 +1203,10 @@
             },
             "delete": {
                 "tags": [
-                    "Sistemas"
+                    "Sistema"
                 ],
-                "description": "elimina un registro de la tabla Sistemas",
-                "operationId": "SistemasController.Delete",
+                "description": "elimina un registro de la tabla Sistema",
+                "operationId": "SistemaController.Delete",
                 "parameters": [
                     {
                         "in": "path",
@@ -1578,18 +1578,18 @@
             "title": "Antecedente",
             "type": "object",
             "properties": {
-                "IdAntecedente": {
+                "HistoriaClinica": {
+                    "$ref": "#/definitions/models.HistoriaClinica"
+                },
+                "Id": {
                     "type": "integer",
                     "format": "int64"
                 },
-                "IdHistoriaClinica": {
-                    "$ref": "#/definitions/models.HistoriaClinica"
-                },
-                "IdTipoAntecedente": {
-                    "$ref": "#/definitions/models.TipoAntecedente"
-                },
                 "Observaciones": {
                     "type": "string"
+                },
+                "TipoAntecedente": {
+                    "$ref": "#/definitions/models.TipoAntecedente"
                 }
             }
         },
@@ -1600,14 +1600,17 @@
                 "Evolucion": {
                     "type": "string"
                 },
-                "IdConsultaFisioterapia": {
+                "HistoriaClinica": {
+                    "$ref": "#/definitions/models.HistoriaClinica"
+                },
+                "HojaHistoria": {
+                    "$ref": "#/definitions/models.HojaHistoria"
+                },
+                "Id": {
                     "type": "integer",
                     "format": "int64"
                 },
-                "IdHojaHistoria": {
-                    "$ref": "#/definitions/models.HojaHistoria"
-                },
-                "Motivo_consulta": {
+                "MotivoConsulta": {
                     "type": "string"
                 },
                 "Observaciones": {
@@ -1642,16 +1645,18 @@
                     "type": "string",
                     "format": "datetime"
                 },
-                "IdDiagnostico": {
+                "HistoriaClinica": {
+                    "$ref": "#/definitions/models.HistoriaClinica"
+                },
+                "HojaHistoria": {
+                    "$ref": "#/definitions/models.HojaHistoria"
+                },
+                "Id": {
                     "type": "integer",
                     "format": "int64"
                 },
                 "Nombre": {
                     "type": "string"
-                },
-                "Numero": {
-                    "type": "integer",
-                    "format": "int64"
                 },
                 "PlanDeManejo": {
                     "type": "string"
@@ -1666,21 +1671,24 @@
                     "type": "string",
                     "format": "datetime"
                 },
-                "IdExamen": {
-                    "type": "integer",
-                    "format": "int64"
+                "HistoriaClinica": {
+                    "$ref": "#/definitions/models.HistoriaClinica"
                 },
-                "IdHojaHistoria": {
+                "HojaHistoria": {
                     "$ref": "#/definitions/models.HojaHistoria"
                 },
-                "IdTipoExamen": {
-                    "$ref": "#/definitions/models.TipoExamen"
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "Nombre": {
                     "type": "string"
                 },
                 "Observacion": {
                     "type": "string"
+                },
+                "TipoExamen": {
+                    "$ref": "#/definitions/models.TipoExamen"
                 }
             }
         },
@@ -1688,11 +1696,11 @@
             "title": "HistoriaClinica",
             "type": "object",
             "properties": {
-                "IdHistoriaClinica": {
+                "Id": {
                     "type": "integer",
                     "format": "int64"
                 },
-                "IdTercero": {
+                "Tercero": {
                     "type": "integer",
                     "format": "int64"
                 }
@@ -1702,6 +1710,13 @@
             "title": "HojaHistoria",
             "type": "object",
             "properties": {
+                "Diagnostico": {
+                    "$ref": "#/definitions/models.Diagnostico"
+                },
+                "Especialidad": {
+                    "type": "integer",
+                    "format": "int64"
+                },
                 "Evolucion": {
                     "type": "string"
                 },
@@ -1709,52 +1724,48 @@
                     "type": "string",
                     "format": "datetime"
                 },
-                "IdDiagnostico": {
-                    "$ref": "#/definitions/models.Diagnostico"
-                },
-                "IdEspecialidad": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "IdHistoriaClinica": {
+                "HistoriaClinica": {
                     "$ref": "#/definitions/models.HistoriaClinica"
                 },
-                "IdHojaHistoria": {
+                "Id": {
                     "type": "integer",
                     "format": "int64"
-                },
-                "IdPersona": {
-                    "type": "number",
-                    "format": "double"
-                },
-                "IdProfesional": {
-                    "type": "number",
-                    "format": "double"
                 },
                 "Motivo": {
                     "type": "string"
                 },
                 "Observacion": {
                     "type": "string"
+                },
+                "Persona": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "Profesional": {
+                    "type": "number",
+                    "format": "double"
                 }
             }
         },
-        "models.Sistemas": {
-            "title": "Sistemas",
+        "models.Sistema": {
+            "title": "Sistema",
             "type": "object",
             "properties": {
-                "IdHojaHistoria": {
+                "HistoriaClinica": {
+                    "$ref": "#/definitions/models.HistoriaClinica"
+                },
+                "HojaHistoria": {
                     "$ref": "#/definitions/models.HojaHistoria"
                 },
-                "IdSistema": {
+                "Id": {
                     "type": "integer",
                     "format": "int64"
                 },
-                "NombreSistema": {
-                    "type": "string"
-                },
                 "Observacion": {
                     "type": "string"
+                },
+                "TipoSistema": {
+                    "$ref": "#/definitions/models.TipoSistema"
                 }
             }
         },
@@ -1776,7 +1787,7 @@
                     "type": "string",
                     "format": "datetime"
                 },
-                "IdTipoAntecedente": {
+                "Id": {
                     "type": "integer",
                     "format": "int64"
                 },
@@ -1789,7 +1800,34 @@
             "title": "TipoExamen",
             "type": "object",
             "properties": {
-                "IdTipoExamen": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.TipoSistema": {
+            "title": "TipoSistema",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
                     "type": "integer",
                     "format": "int64"
                 },

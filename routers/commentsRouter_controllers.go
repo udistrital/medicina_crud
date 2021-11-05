@@ -277,7 +277,7 @@ func init() {
 			Filters:          nil,
 			Params:           nil})
 
-	beego.GlobalControllerRouter["Medicina/controllers:SistemasController"] = append(beego.GlobalControllerRouter["Medicina/controllers:SistemasController"],
+	beego.GlobalControllerRouter["Medicina/controllers:SistemaController"] = append(beego.GlobalControllerRouter["Medicina/controllers:SistemaController"],
 		beego.ControllerComments{
 			Method:           "Post",
 			Router:           "/",
@@ -286,7 +286,7 @@ func init() {
 			Filters:          nil,
 			Params:           nil})
 
-	beego.GlobalControllerRouter["Medicina/controllers:SistemasController"] = append(beego.GlobalControllerRouter["Medicina/controllers:SistemasController"],
+	beego.GlobalControllerRouter["Medicina/controllers:SistemaController"] = append(beego.GlobalControllerRouter["Medicina/controllers:SistemaController"],
 		beego.ControllerComments{
 			Method:           "GetAll",
 			Router:           "/",
@@ -295,7 +295,7 @@ func init() {
 			Filters:          nil,
 			Params:           nil})
 
-	beego.GlobalControllerRouter["Medicina/controllers:SistemasController"] = append(beego.GlobalControllerRouter["Medicina/controllers:SistemasController"],
+	beego.GlobalControllerRouter["Medicina/controllers:SistemaController"] = append(beego.GlobalControllerRouter["Medicina/controllers:SistemaController"],
 		beego.ControllerComments{
 			Method:           "GetOne",
 			Router:           "/:id",
@@ -304,7 +304,7 @@ func init() {
 			Filters:          nil,
 			Params:           nil})
 
-	beego.GlobalControllerRouter["Medicina/controllers:SistemasController"] = append(beego.GlobalControllerRouter["Medicina/controllers:SistemasController"],
+	beego.GlobalControllerRouter["Medicina/controllers:SistemaController"] = append(beego.GlobalControllerRouter["Medicina/controllers:SistemaController"],
 		beego.ControllerComments{
 			Method:           "Put",
 			Router:           "/:id",
@@ -313,7 +313,7 @@ func init() {
 			Filters:          nil,
 			Params:           nil})
 
-	beego.GlobalControllerRouter["Medicina/controllers:SistemasController"] = append(beego.GlobalControllerRouter["Medicina/controllers:SistemasController"],
+	beego.GlobalControllerRouter["Medicina/controllers:SistemaController"] = append(beego.GlobalControllerRouter["Medicina/controllers:SistemaController"],
 		beego.ControllerComments{
 			Method:           "Delete",
 			Router:           "/:id",

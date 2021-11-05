@@ -138,7 +138,7 @@ func (c *ExamenController) GetAll() {
 func (c *ExamenController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.Examen{IdExamen: id}
+	v := models.Examen{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateExamen(&v); err == nil {
 			c.Data["json"] = "OK"

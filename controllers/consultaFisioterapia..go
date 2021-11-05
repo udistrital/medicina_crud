@@ -138,7 +138,7 @@ func (c *ConsultaFisioterapiaController) GetAll() {
 func (c *ConsultaFisioterapiaController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.ConsultaFisioterapia{IdConsultaFisioterapia: id}
+	v := models.ConsultaFisioterapia{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateConsultaFisioterapia(&v); err == nil {
 			c.Data["json"] = "OK"

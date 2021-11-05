@@ -145,7 +145,7 @@ func (c *HojaHistoriaController) GetAll() {
 func (c *HojaHistoriaController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.HojaHistoria{IdHojaHistoria: id}
+	v := models.HojaHistoria{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateHojaHistoria(&v); err == nil {
 			c.Data["json"] = "OK"

@@ -10,8 +10,8 @@ import (
 )
 
 type HistoriaClinica struct {
-	IdHistoriaClinica int `orm:"column(id_historia_clinica);pk;auto"`
-	IdTercero         int `orm:"column(id_tercero);null"`
+	Id      int `orm:"column(id_historia_clinica);pk;auto"`
+	Tercero int `orm:"column(id_tercero);null"`
 }
 
 func (t *HistoriaClinica) TableName() string {
@@ -33,7 +33,7 @@ func AddHistoriaClinica(m *HistoriaClinica) (id int64, err error) {
 // Id no existe
 func GetHistoriaClinicaById(id int) (v *HistoriaClinica, err error) {
 	o := orm.NewOrm()
-	v = &HistoriaClinica{IdHistoriaClinica: id}
+	v = &HistoriaClinica{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
@@ -115,7 +115,7 @@ func GetAllHistoriaClinica(query map[string]string, fields []string, sortby []st
 // El registro a actualizar no existe
 func UpdateHistoriaClinica(m *HistoriaClinica) (err error) {
 	o := orm.NewOrm()
-	v := HistoriaClinica{IdHistoriaClinica: m.IdHistoriaClinica}
+	v := HistoriaClinica{Id: m.Id}
 	if err = o.Read(&v); err == nil {
 		var num int64
 		if num, err = o.Update(m); err == nil {
@@ -129,10 +129,10 @@ func UpdateHistoriaClinica(m *HistoriaClinica) (err error) {
 // El registro a eliminar no existe
 func DeleteHistoriaClinica(id int) (err error) {
 	o := orm.NewOrm()
-	v := HistoriaClinica{IdHistoriaClinica: id}
+	v := HistoriaClinica{Id: id}
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&HistoriaClinica{IdHistoriaClinica: id}); err == nil {
+		if num, err = o.Delete(&HistoriaClinica{Id: id}); err == nil {
 			fmt.Println("Numero de registros eliminados:", num)
 		}
 	}

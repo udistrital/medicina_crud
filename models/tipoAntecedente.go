@@ -11,7 +11,7 @@ import (
 )
 
 type TipoAntecedente struct {
-	IdTipoAntecedente int        `orm:"column(id_tipo_antecedente);pk;auto"`
+	Id                int        `orm:"column(id_tipo_antecedente);pk;auto"`
 	Nombre            string     `orm:"column(nombre);null"`
 	Descripcion       string     `orm:"column(descripcion);null"`
 	Activo            bool       `orm:"column(activo);null"`
@@ -38,7 +38,7 @@ func AddTipoAntecedente(m *TipoAntecedente) (id int64, err error) {
 // Id no existe
 func GetTipoAntecedenteById(id int) (v *TipoAntecedente, err error) {
 	o := orm.NewOrm()
-	v = &TipoAntecedente{IdTipoAntecedente: id}
+	v = &TipoAntecedente{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
@@ -120,7 +120,7 @@ func GetAllTipoAntecedente(query map[string]string, fields []string, sortby []st
 // El registro a actualizar no existe
 func UpdateTipoAntecedente(m *TipoAntecedente) (err error) {
 	o := orm.NewOrm()
-	v := TipoAntecedente{IdTipoAntecedente: m.IdTipoAntecedente}
+	v := TipoAntecedente{Id: m.Id}
 	if err = o.Read(&v); err == nil {
 		var num int64
 		if num, err = o.Update(m); err == nil {
@@ -134,10 +134,10 @@ func UpdateTipoAntecedente(m *TipoAntecedente) (err error) {
 // El registro a eliminar no existe
 func DeleteTipoAntecedente(id int) (err error) {
 	o := orm.NewOrm()
-	v := TipoAntecedente{IdTipoAntecedente: id}
+	v := TipoAntecedente{Id: id}
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&TipoAntecedente{IdTipoAntecedente: id}); err == nil {
+		if num, err = o.Delete(&TipoAntecedente{Id: id}); err == nil {
 			fmt.Println("Numero de registros eliminados:", num)
 		}
 	}

@@ -138,7 +138,7 @@ func (c *TipoAntecedenteController) GetAll() {
 func (c *TipoAntecedenteController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.TipoAntecedente{IdTipoAntecedente: id}
+	v := models.TipoAntecedente{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateTipoAntecedente(&v); err == nil {
 			c.Data["json"] = "OK"

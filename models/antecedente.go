@@ -10,10 +10,10 @@ import (
 )
 
 type Antecedente struct {
-	IdAntecedente     int              `orm:"column(id_antecedente);pk;auto"`
-	IdTipoAntecedente *TipoAntecedente `orm:"column(id_tipo_antecedente);rel(fk);null"`
-	IdHistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
-	Observaciones     string           `orm:"column(observaciones)"`
+	Id              int              `orm:"column(id_antecedente);pk;auto"`
+	TipoAntecedente *TipoAntecedente `orm:"column(id_tipo_antecedente);rel(fk);null"`
+	HistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
+	Observaciones   string           `orm:"column(observaciones)"`
 }
 
 func (t *Antecedente) TableName() string {
@@ -35,7 +35,7 @@ func AddAntecendete(m *Antecedente) (id int64, err error) {
 // Id no existe
 func GetAntecedenteById(id int) (v *Antecedente, err error) {
 	o := orm.NewOrm()
-	v = &Antecedente{IdAntecedente: id}
+	v = &Antecedente{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
@@ -117,7 +117,7 @@ func GetAllAntecedente(query map[string]string, fields []string, sortby []string
 // El registro a actualizar no existe
 func UpdateAntecedente(m *Antecedente) (err error) {
 	o := orm.NewOrm()
-	v := Antecedente{IdAntecedente: m.IdAntecedente}
+	v := Antecedente{Id: m.Id}
 	if err = o.Read(&v); err == nil {
 		var num int64
 		if num, err = o.Update(m); err == nil {
@@ -131,10 +131,10 @@ func UpdateAntecedente(m *Antecedente) (err error) {
 // El registro a eliminar no existe
 func DeleteAntecedente(id int) (err error) {
 	o := orm.NewOrm()
-	v := Antecedente{IdAntecedente: id}
+	v := Antecedente{Id: id}
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&Antecedente{IdAntecedente: id}); err == nil {
+		if num, err = o.Delete(&Antecedente{Id: id}); err == nil {
 			fmt.Println("Número de registros eliminados de la base de datos:", num)
 		}
 	}
