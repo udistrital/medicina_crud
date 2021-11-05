@@ -18,7 +18,7 @@ type Diagnostico struct {
 	Activo            bool             `orm:"column(activo);null"`
 	FechaCreacion     *time.Time       `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
 	FechaModificacion *time.Time       `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
-	PlanDeManejo      string           `orm:"column(plan_de_manejo);null"`
+	PlanDeManejo      string           `orm:"column(plan_de_manejo);type(json);null"`
 	Analisis          string           `orm:"column(analisis);null"`
 	HojaHistoria      *HojaHistoria    `orm:"column(id_hoja_historia);rel(fk)"`
 	HistoriaClinica   *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk)"`

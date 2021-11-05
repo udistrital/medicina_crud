@@ -18,7 +18,7 @@ type TipoSistema struct {
 }
 
 func (p *TipoSistema) TableName() string {
-	return "TipoSistema"
+	return "tiposistema"
 }
 func init() {
 	orm.RegisterModel(new(TipoSistema))

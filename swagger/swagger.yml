@@ -1037,6 +1037,120 @@ paths:
           description: '{string} borrado exitoso!'
         "403":
           description: Id vacío
+  /TipoSistema/:
+    get:
+      tags:
+      - TipoSistema
+      description: consulta todos los registros de la tabla TipoSistema
+      operationId: TipoSistemaController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
+        type: string
+      - in: query
+        name: fields
+        description: Campos devueltos. Por ejemplo, col1, col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Campos ordenados por. Por ejemplo, Col1, col2 ...
+        type: string
+      - in: query
+        name: order
+        description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
+        type: string
+      - in: query
+        name: offset
+        description: Posición inicial del conjunto de resultados. Debe ser un número entero
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoSistema'
+        "403":
+          description: ""
+    post:
+      tags:
+      - TipoSistema
+      description: agregar un registro en la tabla TipoSistema
+      operationId: TipoSistemaController.Post
+      parameters:
+      - in: body
+        name: body
+        description: Cuerpo para el contenido de TipoSistema
+        required: true
+        schema:
+          $ref: '#/definitions/models.TipoSistema'
+      responses:
+        "201":
+          description: '{int} models.TipoSistema'
+        "403":
+          description: Cuerpo Vacío
+  /TipoSistema/{id}:
+    get:
+      tags:
+      - TipoSistema
+      description: consultar un registro de la tabla TipoSistema por su id
+      operationId: TipoSistemaController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: Id a consultar
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoSistema'
+        "403":
+          description: :id está vacío
+    put:
+      tags:
+      - TipoSistema
+      description: actualizar un registro de la tabla TipoSistema
+      operationId: TipoSistemaController.Put
+      parameters:
+      - in: path
+        name: id
+        description: Id del registro a actualizar
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Cuerpo para el contenido de TipoSistema
+        required: true
+        schema:
+          $ref: '#/definitions/models.TipoSistema'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoSistema'
+        "403":
+          description: :id no es entero
+    delete:
+      tags:
+      - TipoSistema
+      description: elimina un registro de la tabla TipoSistema
+      operationId: TipoSistemaController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: Id del registro a eliminar
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} borrado exitoso!'
+        "403":
+          description: Id vacío
 definitions:
   models.Antecedente:
     title: Antecedente

@@ -15,7 +15,7 @@ type ConsultaFisioterapia struct {
 	HojaHistoria    *HojaHistoria    `orm:"column(id_hoja_historia);rel(fk);null"`
 	MotivoConsulta  string           `orm:"column(motivo_consulta);null"`
 	Valoracion      string           `orm:"column(valoracion);null"`
-	PlanManejo      string           `orm:"column(plan_manejo);null"`
+	PlanManejo      string           `orm:"column(plan_manejo);type(json);null"`
 	Evolucion       string           `orm:"column(evolucion);type(json);null"`
 	Observaciones   string           `orm:"column(observaciones);null"`
 }
