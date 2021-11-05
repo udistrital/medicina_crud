@@ -11,9 +11,9 @@ import (
 
 type Sistema struct {
 	Id              int              `orm:"column(id_sistema);pk;auto"`
+	HistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
 	HojaHistoria    *HojaHistoria    `orm:"column(id_hoja_historia);rel(fk);null"`
 	TipoSistema     *TipoSistema     `orm:"column(id_tipo_sistema);rel(fk);null"`
-	HistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
 	Observacion     string           `orm:"column(observacion);null"`
 }
 

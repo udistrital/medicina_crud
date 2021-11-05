@@ -11,8 +11,8 @@ import (
 
 type Antecedente struct {
 	Id              int              `orm:"column(id_antecedente);pk;auto"`
-	TipoAntecedente *TipoAntecedente `orm:"column(id_tipo_antecedente);rel(fk);null"`
 	HistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
+	TipoAntecedente *TipoAntecedente `orm:"column(id_tipo_antecedente);rel(fk);null"`
 	Observaciones   string           `orm:"column(observaciones)"`
 }
 

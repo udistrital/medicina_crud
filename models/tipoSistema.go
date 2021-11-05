@@ -12,9 +12,9 @@ import (
 
 type TipoSistema struct {
 	Id                int        `orm:"column(id_tipo_sistema);pk;auto"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
 	Nombre            string     `orm:"column(nombre);null"`
 	Activo            bool       `orm:"column(activo);null"`
-	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
 }
 
 func (p *TipoSistema) TableName() string {

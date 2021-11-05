@@ -12,8 +12,8 @@ import (
 
 type TipoExamen struct {
 	Id                int        `orm:"column(id_tipo_examen);pk;auto"`
-	Nombre            string     `orm:"column(nombre);null"`
 	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	Nombre            string     `orm:"column(nombre);null"`
 	Activo            bool       `orm:"column(activo);null"`
 }
 

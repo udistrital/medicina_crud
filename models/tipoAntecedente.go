@@ -12,11 +12,11 @@ import (
 
 type TipoAntecedente struct {
 	Id                int        `orm:"column(id_tipo_antecedente);pk;auto"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
 	Nombre            string     `orm:"column(nombre);null"`
 	Descripcion       string     `orm:"column(descripcion);null"`
 	Activo            bool       `orm:"column(activo);null"`
-	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
-	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
 }
 
 func (p *TipoAntecedente) TableName() string {
