@@ -1247,8 +1247,6 @@ definitions:
     title: HojaHistoria
     type: object
     properties:
-      Diagnostico:
-        $ref: '#/definitions/models.Diagnostico'
       Especialidad:
         type: integer
         format: int64

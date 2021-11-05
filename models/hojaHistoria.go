@@ -13,7 +13,6 @@ import (
 type HojaHistoria struct {
 	Id              int              `orm:"column(id_hoja_historia);pk;auto"`
 	HistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
-	Diagnostico     *Diagnostico     `orm:"column(id_diagnostico);rel(fk);null"` //Validar
 	FechaConsulta   *time.Time       `orm:"column(fecha_consulta);type(timestamp without time zone);null"`
 	Motivo          string           `orm:"column(motivo);null"`
 	Observacion     string           `orm:"column(observacion);null"`
