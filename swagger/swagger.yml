@@ -1190,18 +1190,10 @@ definitions:
     title: Diagnostico
     type: object
     properties:
-      Activo:
-        type: boolean
       Analisis:
         type: string
       Descripcion:
         type: string
-      FechaCreacion:
-        type: string
-        format: datetime
-      FechaModificacion:
-        type: string
-        format: datetime
       HistoriaClinica:
         $ref: '#/definitions/models.HistoriaClinica'
       HojaHistoria:
@@ -1209,8 +1201,6 @@ definitions:
       Id:
         type: integer
         format: int64
-      Nombre:
-        type: string
       PlanDeManejo:
         type: string
   models.Examen:
@@ -1227,8 +1217,6 @@ definitions:
       Id:
         type: integer
         format: int64
-      Nombre:
-        type: string
       Observacion:
         type: string
       TipoExamen:
@@ -1317,6 +1305,8 @@ definitions:
         type: integer
         format: int64
       Nombre:
+        type: string
+      Observacion:
         type: string
   models.TipoSistema:
     title: TipoSistema

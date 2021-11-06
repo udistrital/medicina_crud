@@ -16,7 +16,6 @@ type Examen struct {
 	HojaHistoria    *HojaHistoria    `orm:"column(id_hoja_historia);rel(fk);null"`
 	TipoExamen      *TipoExamen      `orm:"column(id_tipo_examen);rel(fk);null"`
 	FechaExamen     *time.Time       `orm:"column(fecha_examen);type(timestamp without time zone);null"`
-	Nombre          string           `orm:"column(nombre);null"`
 	Observacion     string           `orm:"column(observacion);null"`
 }
 

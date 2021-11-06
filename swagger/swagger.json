@@ -1801,22 +1801,11 @@
             "title": "Diagnostico",
             "type": "object",
             "properties": {
-                "Activo": {
-                    "type": "boolean"
-                },
                 "Analisis": {
                     "type": "string"
                 },
                 "Descripcion": {
                     "type": "string"
-                },
-                "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
-                },
-                "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
                 },
                 "HistoriaClinica": {
                     "$ref": "#/definitions/models.HistoriaClinica"
@@ -1827,9 +1816,6 @@
                 "Id": {
                     "type": "integer",
                     "format": "int64"
-                },
-                "Nombre": {
-                    "type": "string"
                 },
                 "PlanDeManejo": {
                     "type": "string"
@@ -1853,9 +1839,6 @@
                 "Id": {
                     "type": "integer",
                     "format": "int64"
-                },
-                "Nombre": {
-                    "type": "string"
                 },
                 "Observacion": {
                     "type": "string"
@@ -1982,6 +1965,9 @@
                     "format": "int64"
                 },
                 "Nombre": {
+                    "type": "string"
+                },
+                "Observacion": {
                     "type": "string"
                 }
             }

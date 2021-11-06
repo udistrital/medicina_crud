@@ -15,6 +15,7 @@ type TipoExamen struct {
 	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
 	Nombre            string     `orm:"column(nombre);null"`
 	Activo            bool       `orm:"column(activo);null"`
+	Observacion       string     `orm:"column(observacion);null"`
 }
 
 func (p *TipoExamen) TableName() string {
