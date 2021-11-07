@@ -14,8 +14,8 @@ type Diagnostico struct {
 	HistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk)"`
 	HojaHistoria    *HojaHistoria    `orm:"column(id_hoja_historia);rel(fk)"`
 	Descripcion     string           `orm:"column(descripcion);null"`
-	PlanDeManejo    string           `orm:"column(plan_de_manejo);type(json);null"`
-	Analisis        string           `orm:"column(analisis);null"`
+	PlanDeManejo    string           `orm:"column(plan_de_manejo);null"`
+	Analisis        string           `orm:"column(analisis);type(json);null"`
 }
 
 func (t *Diagnostico) TableName() string {
