@@ -11,7 +11,7 @@ import (
 
 type ConsultaFisioterapia struct {
 	Id              int              `orm:"column(id_consulta_fisioterapia);pk;auto"`
-	HistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk)"`
+	HistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
 	HojaHistoria    *HojaHistoria    `orm:"column(id_hoja_historia);rel(fk);null"`
 	MotivoConsulta  string           `orm:"column(motivo_consulta);null"`
 	Valoracion      string           `orm:"column(valoracion);null"`

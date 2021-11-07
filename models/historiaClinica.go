@@ -10,8 +10,8 @@ import (
 )
 
 type HistoriaClinica struct {
-	Id      int `orm:"column(id_historia_clinica);pk;auto"`
-	Tercero int `orm:"column(id_tercero);null"`
+	Id      int   `orm:"column(id_historia_clinica);pk;auto"`
+	Tercero int64 `orm:"column(id_tercero);type(bigint);null"`
 }
 
 func (t *HistoriaClinica) TableName() string {
