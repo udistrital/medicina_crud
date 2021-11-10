@@ -48,21 +48,6 @@ func init() {
 				&controllers.SistemaController{},
 			),
 		),
-		beego.NSNamespace("/TipoAntecedente",
-			beego.NSInclude(
-				&controllers.TipoAntecedenteController{},
-			),
-		),
-		beego.NSNamespace("/TipoExamen",
-			beego.NSInclude(
-				&controllers.TipoExamenController{},
-			),
-		),
-		beego.NSNamespace("/TipoSistema",
-			beego.NSInclude(
-				&controllers.TipoSistemaController{},
-			),
-		),
 	)
 	beego.AddNamespace(ns)
 }

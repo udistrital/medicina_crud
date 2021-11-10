@@ -10,10 +10,26 @@ import (
 )
 
 type Antecedente struct {
-	Id              int              `orm:"column(id_antecedente);pk;auto"`
-	HistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
-	TipoAntecedente *TipoAntecedente `orm:"column(id_tipo_antecedente);rel(fk);null"`
-	Observaciones   string           `orm:"column(observaciones)"`
+	Id                 int              `orm:"column(id_antecedente);pk;auto"`
+	HistoriaClinica    *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
+	Patologicos        string           `orm:"column(patologicos);null"`
+	Hospitalarios      string           `orm:"column(hospitalarios);null"`
+	Quirurgicos        string           `orm:"column(quirurgicos);null"`
+	Traumaticos        string           `orm:"column(traumaticos);null"`
+	GenitoUrinarios    string           `orm:"column(genito_urinarios);null"`
+	Alergicos          string           `orm:"column(alergicos);null"`
+	Farmacologicos     string           `orm:"column(farmacologicos);null"`
+	Familiares         string           `orm:"column(familiares);null"`
+	Ocupacionales      string           `orm:"column(ocupacionales);null"`
+	Menarquia          string           `orm:"column(menarquia);null"`
+	Fur                string           `orm:"column(fur);null"`
+	Ciclos             string           `orm:"column(ciclos);null"`
+	CompañerosSexuales string           `orm:"column(compañeros_sexuales);null"`
+	Fog                string           `orm:"column(fog);null"`
+	Pp                 string           `orm:"column(pp);null"`
+	Fup                string           `orm:"column(fup);null"`
+	Ccv                string           `orm:"column(ccv);type(json);null"`
+	Seno               string           `orm:"column(seno);type(json);null"`
 }
 
 func (t *Antecedente) TableName() string {

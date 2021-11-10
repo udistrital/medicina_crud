@@ -13,8 +13,18 @@ type Sistema struct {
 	Id              int              `orm:"column(id_sistema);pk;auto"`
 	HistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
 	HojaHistoria    *HojaHistoria    `orm:"column(id_hoja_historia);rel(fk);null"`
-	TipoSistema     *TipoSistema     `orm:"column(id_tipo_sistema);rel(fk);null"`
-	Observacion     string           `orm:"column(observacion);null"`
+	Piel            string           `orm:"column(piel);null"`
+	Colageno        string           `orm:"column(colageno);null"`
+	Linfatico       string           `orm:"column(linfatico);null"`
+	Oseo            string           `orm:"column(oseo);null"`
+	Muscular        string           `orm:"column(muscular);null"`
+	Articular       string           `orm:"column(articular);null"`
+	Digestivo       string           `orm:"column(digestivo);null"`
+	Urinario        string           `orm:"column(urinario);null"`
+	Sentidos        string           `orm:"column(sentidos);null"`
+	CardioVascular  string           `orm:"column(cardiovascular);null"`
+	Neurologico     string           `orm:"column(neurologico);null"`
+	Respiratorio    string           `orm:"column(respiratorio);null"`
 }
 
 func (p *Sistema) TableName() string {
