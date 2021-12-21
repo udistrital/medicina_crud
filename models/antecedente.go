@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
@@ -28,8 +29,11 @@ type Antecedente struct {
 	Fog                string           `orm:"column(fog);null"`
 	Pp                 string           `orm:"column(pp);null"`
 	Fup                string           `orm:"column(fup);null"`
-	Ccv                string           `orm:"column(ccv);type(json);null"`
-	Seno               string           `orm:"column(seno);type(json);null"`
+	Ias                string           `orm:"column(ias);null"`
+	Ccv                *time.Time 		`orm:"column(ccv);type(timestamp without time zone);null"`
+	Seno               *time.Time 		`orm:"column(seno);type(timestamp without time zone);null"`
+	ResultadoCcv 	   string           `orm:"column(resultado_ccv);null"`
+	ResultadoSeno 	   string           `orm:"column(resultado_seno);null"`
 }
 
 func (t *Antecedente) TableName() string {

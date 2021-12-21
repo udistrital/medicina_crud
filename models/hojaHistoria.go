@@ -17,7 +17,7 @@ type HojaHistoria struct {
 	Motivo          string           `orm:"column(motivo);null"`
 	Observacion     string           `orm:"column(observacion);null"`
 	Evolucion       string           `orm:"column(evolucion);type(json);null"`
-	Especialidad    int              `orm:"column(id_especialidad);type(bigint);null"`
+	Especialidad    *Especialidad    `orm:"column(id_especialidad);rel(fk);null"`
 	Profesional     float64          `orm:"column(id_profesional);type(bigint);null"`
 	Persona         float64          `orm:"column(id_persona);type(bigint);null"`
 }

@@ -21,6 +21,11 @@ func init() {
 				&controllers.AntecedenteController{},
 			),
 		),
+		beego.NSNamespace("/Especialidad",
+			beego.NSInclude(
+				&controllers.EspecialidadController{},
+			),
+		),
 		beego.NSNamespace("/ConsultaFisioterapia",
 			beego.NSInclude(
 				&controllers.ConsultaFisioterapiaController{},
