@@ -16,6 +16,7 @@ type Diagnostico struct {
 	Descripcion     string           `orm:"column(descripcion);null"`
 	PlanDeManejo    string           `orm:"column(plan_de_manejo);null"`
 	Analisis        string           `orm:"column(analisis);type(json);null"`
+	Medicamento     string           `orm:"column(medicamento);null"`
 }
 
 func (t *Diagnostico) TableName() string {

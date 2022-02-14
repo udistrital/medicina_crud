@@ -9,48 +9,46 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type ConsultaFisioterapia struct {
-	Id              int              `orm:"column(id_consulta_fisioterapia);pk;auto"`
+type NotasEnfermeria struct {
+	Id              int              `orm:"column(id_notas);pk;auto"`
 	HistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
 	HojaHistoria    *HojaHistoria    `orm:"column(id_hoja_historia);rel(fk);null"`
-	Valoracion      string           `orm:"column(valoracion);null"`
-	PlanManejo      string           `orm:"column(plan_manejo);null"`
-	Diagnostico     string           `orm:"column(diagnostico);null"`
-	Medicamento     string           `orm:"column(medicamento);null"`
+	Descripcion     string           `orm:"column(descripcion);null"`
+	SignosVitales   string           `orm:"column(signos_vitales);null"`
 }
 
-func (t *ConsultaFisioterapia) TableName() string {
-	return "consultafisioterapia"
+func (t *NotasEnfermeria) TableName() string {
+	return "notasenfermeria"
 }
 func init() {
-	orm.RegisterModel(new(ConsultaFisioterapia))
+	orm.RegisterModel(new(NotasEnfermeria))
 }
 
-// AddConsultaFisioterapia inserta un registro en la tabla consultafisioterapia
+// AddNotasEnfermeria inserta un registro en la tabla notasenfermeria
 // Último registro insertado con éxito
-func AddConsultaFisioterapia(m *ConsultaFisioterapia) (id int64, err error) {
+func AddNotasEnfermeria(m *NotasEnfermeria) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetConsultaFisioterapiaById obtiene un registro de la tabla consultafisioterapia por su id
+// GetNotasEnfermeriaById obtiene un registro de la tabla notasenfermeria por su id
 // Id no existe
-func GetConsultaFisioterapiaById(id int) (v *ConsultaFisioterapia, err error) {
+func GetNotasEnfermeriaById(id int) (v *NotasEnfermeria, err error) {
 	o := orm.NewOrm()
-	v = &ConsultaFisioterapia{Id: id}
+	v = &NotasEnfermeria{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllConsultaFisioterapia obtiene todos los registros de la tabla consultafisioterapia
+// GetAllNotasEnfermeria obtiene todos los registros de la tabla notasenfermeria
 // No existen registros
-func GetAllConsultaFisioterapia(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllNotasEnfermeria(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(ConsultaFisioterapia))
+	qs := o.QueryTable(new(NotasEnfermeria))
 	for k, v := range query {
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
@@ -94,7 +92,7 @@ func GetAllConsultaFisioterapia(query map[string]string, fields []string, sortby
 			return nil, errors.New("error: campos de 'order' no utilizados")
 		}
 	}
-	var l []ConsultaFisioterapia
+	var l []NotasEnfermeria
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -116,11 +114,11 @@ func GetAllConsultaFisioterapia(query map[string]string, fields []string, sortby
 	return nil, err
 }
 
-// UpdateConsultaFisioterapia actualiza un registro de la tabla consultafisioterapia
+// UpdateNotasEnfermeria actualiza un registro de la tabla notasenfermeria
 // El registro a actualizar no existe
-func UpdateConsultaFisioterapia(m *ConsultaFisioterapia) (err error) {
+func UpdateNotasEnfermeria(m *NotasEnfermeria) (err error) {
 	o := orm.NewOrm()
-	v := ConsultaFisioterapia{Id: m.Id}
+	v := NotasEnfermeria{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -131,15 +129,15 @@ func UpdateConsultaFisioterapia(m *ConsultaFisioterapia) (err error) {
 	return
 }
 
-// DeleteConsultaFisioterapia  elimina un registro de la tabla consultafisioterapia
+// DeleteNotasEnfermeria  elimina un registro de la tabla notasenfermeria
 // El registro a eliminar no existe
-func DeleteConsultaFisioterapia(id int) (err error) {
+func DeleteNotasEnfermeria(id int) (err error) {
 	o := orm.NewOrm()
-	v := ConsultaFisioterapia{Id: id}
+	v := NotasEnfermeria{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&ConsultaFisioterapia{Id: id}); err == nil {
+		if num, err = o.Delete(&NotasEnfermeria{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

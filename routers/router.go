@@ -48,7 +48,13 @@ func init() {
 			beego.NSInclude(
 				&controllers.HojaHistoriaController{},
 			),
-		), beego.NSNamespace("/Sistema",
+		),
+		beego.NSNamespace("/NotasEnfermeria",
+			beego.NSInclude(
+				&controllers.NotasEnfermeriaController{},
+			),
+		), 
+		beego.NSNamespace("/Sistema",
 			beego.NSInclude(
 				&controllers.SistemaController{},
 			),
