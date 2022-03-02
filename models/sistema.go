@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
@@ -25,6 +26,9 @@ type Sistema struct {
 	CardioVascular  string           `orm:"column(cardiovascular);null"`
 	Neurologico     string           `orm:"column(neurologico);null"`
 	Respiratorio    string           `orm:"column(respiratorio);null"`
+	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	Activo            bool       `orm:"column(activo);null"`
 }
 
 func (p *Sistema) TableName() string {

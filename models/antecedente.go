@@ -34,6 +34,9 @@ type Antecedente struct {
 	Seno               *time.Time 		`orm:"column(seno);type(timestamp without time zone);null"`
 	ResultadoCcv 	   string           `orm:"column(resultado_ccv);null"`
 	ResultadoSeno 	   string           `orm:"column(resultado_seno);null"`
+	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	Activo            bool       `orm:"column(activo);null"`
 }
 
 func (t *Antecedente) TableName() string {

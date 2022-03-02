@@ -20,6 +20,9 @@ type HojaHistoria struct {
 	Especialidad    *Especialidad    `orm:"column(id_especialidad);rel(fk);null"`
 	Profesional     float64          `orm:"column(id_profesional);type(bigint);null"`
 	Persona         float64          `orm:"column(id_persona);type(bigint);null"`
+	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	Activo            bool       `orm:"column(activo);null"`
 }
 
 func (t *HojaHistoria) TableName() string {

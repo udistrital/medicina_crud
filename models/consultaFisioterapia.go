@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
@@ -17,6 +18,9 @@ type ConsultaFisioterapia struct {
 	PlanManejo      string           `orm:"column(plan_manejo);null"`
 	Diagnostico     string           `orm:"column(diagnostico);null"`
 	Medicamento     string           `orm:"column(medicamento);null"`
+	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	Activo            bool       `orm:"column(activo);null"`
 }
 
 func (t *ConsultaFisioterapia) TableName() string {
