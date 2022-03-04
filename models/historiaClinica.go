@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
@@ -12,6 +13,9 @@ import (
 type HistoriaClinica struct {
 	Id      int   `orm:"column(id_historia_clinica);pk;auto"`
 	Tercero int64 `orm:"column(id_tercero);type(bigint);null"`
+	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	Activo            bool       `orm:"column(activo);null"`
 }
 
 func (t *HistoriaClinica) TableName() string {
