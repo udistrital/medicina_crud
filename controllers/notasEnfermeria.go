@@ -11,12 +11,12 @@ import (
 	"github.com/astaxie/beego"
 )
 
-type TipoExamenController struct {
+type NotasEnfermeriaController struct {
 	beego.Controller
 }
 
-// URLMapping ...
-func (c *TipoExamenController) URLMapping() {
+//URLMapping ...
+func (c *NotasEnfermeriaController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -26,15 +26,15 @@ func (c *TipoExamenController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description agregar un registro en la tabla TipoExamen
-// @Param	body		body 	models.TipoExamen	true		"Cuerpo para el contenido de TipoExamen"
-// @Success 201 {int} models.TipoExamen
+// @Description agregar un registro en la tabla NotasEnfermeria
+// @Param	body		body 	models.NotasEnfermeria	true		"Cuerpo para el contenido de NotasEnfermeria"
+// @Success 201 {int} models.NotasEnfermeria
 // @Failure 403 Cuerpo Vacío
 // @router / [post]
-func (c *TipoExamenController) Post() {
-	var v models.TipoExamen
+func (c *NotasEnfermeriaController) Post() {
+	var v models.NotasEnfermeria
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddTipoExamen(&v); err == nil {
+		if _, err := models.AddNotasEnfermeria(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -48,15 +48,15 @@ func (c *TipoExamenController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description consultar un registro de la tabla TipoExamen por su id
+// @Description consultar un registro de la tabla NotasEnfermeria por su id
 // @Param	id		path 	string	true		"Id a consultar"
-// @Success 200 {object} models.TipoExamen
+// @Success 200 {object} models.NotasEnfermeria
 // @Failure 403 :id está vacío
 // @router /:id [get]
-func (c *TipoExamenController) GetOne() {
+func (c *NotasEnfermeriaController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetTipoExamenById(id)
+	v, err := models.GetNotasEnfermeriaById(id)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -67,17 +67,17 @@ func (c *TipoExamenController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description consulta todos los registros de la tabla TipoExamen
-// @Param   query   consulta    string  false   "Filtro. Por ejemplo, col1: v1, col2: v2 ..."
-// @Param   fields  consulta    string  false   "Campos devueltos. Por ejemplo, col1, col2 ..."
-// @Param   sortby  consulta    string  false   "Campos ordenados por. Por ejemplo, Col1, col2 ..."
-// @Param   order   consulta    string  false   "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ..."
-// @Param   limit   consulta    string  false   "Limite el tamaño del conjunto de resultados. Debe ser un número entero"
-// @Param   offset  consulta    string  false   "Posición inicial del conjunto de resultados. Debe ser un número entero"
-// @Success 200 {object} models.TipoExamen
+// @Description consulta todos los registros de la tabla NotasEnfermeria
+// @Param   query   query    string  false   "Filtro. Por ejemplo, col1: v1, col2: v2 ..."
+// @Param   fields  query    string  false   "Campos devueltos. Por ejemplo, col1, col2 ..."
+// @Param   sortby  query    string  false   "Campos ordenados por. Por ejemplo, Col1, col2 ..."
+// @Param   order   query    string  false   "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ..."
+// @Param   limit   query    string  false   "Limite el tamaño del conjunto de resultados. Debe ser un número entero"
+// @Param   offset  query    string  false   "Posición inicial del conjunto de resultados. Debe ser un número entero"
+// @Success 200 {object} models.NotasEnfermeria
 // @Failure 403
 // @router / [get]
-func (c *TipoExamenController) GetAll() {
+func (c *NotasEnfermeriaController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -118,7 +118,7 @@ func (c *TipoExamenController) GetAll() {
 			query[k] = v
 		}
 	}
-	l, err := models.GetAllTipoExamen(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllNotasEnfermeria(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -127,20 +127,20 @@ func (c *TipoExamenController) GetAll() {
 	c.ServeJSON()
 }
 
-// Put ...
+//Put ...
 // @Title Put
-// @Description actualizar un registro de la tabla TipoExamen
+// @Description actualizar un registro de la tabla NotasEnfermeria
 // @Param	id		path 	string	true		"Id del registro a actualizar"
-// @Param	body		body 	models.TipoExamen	true		"Cuerpo para el contenido de TipoExamen"
-// @Success 200 {object} models.TipoExamen
+// @Param	body		body 	models.NotasEnfermeria	true		"Cuerpo para el contenido de NotasEnfermeria"
+// @Success 200 {object} models.NotasEnfermeria
 // @Failure 403 :id no es entero
 // @router /:id [put]
-func (c *TipoExamenController) Put() {
+func (c *NotasEnfermeriaController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.TipoExamen{IdTipoExamen: id}
+	v := models.NotasEnfermeria{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateTipoExamen(&v); err == nil {
+		if err := models.UpdateNotasEnfermeria(&v); err == nil {
 			c.Data["json"] = "OK"
 		} else {
 			c.Data["json"] = err.Error()
@@ -151,17 +151,17 @@ func (c *TipoExamenController) Put() {
 	c.ServeJSON()
 }
 
-// Delete ...
+//Delete ...
 // @Title Delete
-// @Description elimina un registro de la tabla TipoExamen
+// @Description elimina un registro de la tabla NotasEnfermeria
 // @Param	id		path 	string	true		"Id del registro a eliminar"
 // @Success 200 {string} borrado exitoso!
 // @Failure 403 Id vacío
 // @router /:id [delete]
-func (c *TipoExamenController) Delete() {
+func (c *NotasEnfermeriaController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteTipoExamen(id); err == nil {
+	if err := models.DeleteNotasEnfermeria(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()

@@ -9,6 +9,7 @@ import (
 	"Medicina/models"
 
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
 )
 
 type HojaHistoriaController struct {
@@ -27,7 +28,7 @@ func (c *HojaHistoriaController) URLMapping() {
 // Post ...
 // @Title Post
 // @Description agregar un registro en la tabla HojaHistoria
-// @Param	body		body 	models.HojaHistoria	true		"Cuerpo para el contenido de ConsultaFisioterapia"
+// @Param	body		body 	models.HojaHistoria	true		"Cuerpo para el contenido de queryFisioterapia"
 // @Success 201 {int} models.HojaHistoria
 // @Failure 403 Cuerpo Vacío
 // @router / [post]
@@ -48,8 +49,8 @@ func (c *HojaHistoriaController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description consultar un registro de la tabla HojaHistoria por su id
-// @Param	id		path 	string	true		"Id a consultar"
+// @Description queryr un registro de la tabla HojaHistoria por su id
+// @Param	id		path 	string	true		"Id a queryr"
 // @Success 200 {object} models.HojaHistoria
 // @Failure 403 :id está vacío
 // @router /:id [get]
@@ -68,12 +69,12 @@ func (c *HojaHistoriaController) GetOne() {
 // GetAll ...
 // @Title Get All
 // @Description consulta todos los registros de la tabla HojaHistoria
-// @Param   query   consulta    string  false   "Filtro. Por ejemplo, col1: v1, col2: v2 ..."
-// @Param   fields  consulta    string  false   "Campos devueltos. Por ejemplo, col1, col2 ..."
-// @Param   sortby  consulta    string  false   "Campos ordenados por. Por ejemplo, Col1, col2 ..."
-// @Param   order   consulta    string  false   "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ..."
-// @Param   limit   consulta    string  false   "Limite el tamaño del conjunto de resultados. Debe ser un número entero"
-// @Param   offset  consulta    string  false   "Posición inicial del conjunto de resultados. Debe ser un número entero"
+// @Param   query   query    string  false   "Filtro. Por ejemplo, col1: v1, col2: v2 ..."
+// @Param   fields  query    string  false   "Campos devueltos. Por ejemplo, col1, col2 ..."
+// @Param   sortby  query    string  false   "Campos ordenados por. Por ejemplo, Col1, col2 ..."
+// @Param   order   query    string  false   "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ..."
+// @Param   limit   query    string  false   "Limite el tamaño del conjunto de resultados. Debe ser un número entero"
+// @Param   offset  query    string  false   "Posición inicial del conjunto de resultados. Debe ser un número entero"
 // @Success 200 {object} models.HojaHistoria
 // @Failure 403
 // @router / [get]
@@ -118,10 +119,16 @@ func (c *HojaHistoriaController) GetAll() {
 			query[k] = v
 		}
 	}
+
 	l, err := models.GetAllHojaHistoria(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		c.Data["system"] = err
+		c.Abort("404")
 	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
 		c.Data["json"] = l
 	}
 	c.ServeJSON()
@@ -131,14 +138,14 @@ func (c *HojaHistoriaController) GetAll() {
 // @Title Put
 // @Description actualizar un registro de la tabla HojaHistoria
 // @Param	id		path 	string	true		"Id del registro a actualizar"
-// @Param	body		body 	models.HojaHistoria	true		"Cuerpo para el contenido de ConsultaFisioterapia"
+// @Param	body		body 	models.HojaHistoria	true		"Cuerpo para el contenido de queryFisioterapia"
 // @Success 200 {object} models.HojaHistoria
 // @Failure 403 :id no es entero
 // @router /:id [put]
 func (c *HojaHistoriaController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.HojaHistoria{IdHojaHistoria: id}
+	v := models.HojaHistoria{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateHojaHistoria(&v); err == nil {
 			c.Data["json"] = "OK"

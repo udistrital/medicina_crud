@@ -5,47 +5,54 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
-type TipoExamen struct {
-	IdTipoExamen int    `orm:"column(id_tipo_examen);pk;auto"`
-	Nombre       string `orm:"column(nombre);null"`
+type NotasEnfermeria struct {
+	Id              int              `orm:"column(id_notas);pk;auto"`
+	HistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
+	HojaHistoria    *HojaHistoria    `orm:"column(id_hoja_historia);rel(fk);null"`
+	Descripcion     string           `orm:"column(descripcion);null"`
+	SignosVitales   string           `orm:"column(signos_vitales);null"`
+	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	Activo            bool       `orm:"column(activo);null"`
 }
 
-func (p *TipoExamen) TableName() string {
-	return "tipoexamen"
+func (t *NotasEnfermeria) TableName() string {
+	return "notasenfermeria"
 }
 func init() {
-	orm.RegisterModel(new(TipoExamen))
+	orm.RegisterModel(new(NotasEnfermeria))
 }
 
-// AddTipoExamen inserta un registro en la tabla tipoexamen
+// AddNotasEnfermeria inserta un registro en la tabla notasenfermeria
 // Último registro insertado con éxito
-func AddTipoExamen(m *TipoExamen) (id int64, err error) {
+func AddNotasEnfermeria(m *NotasEnfermeria) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetTipoExamenById obtiene un registro de la tabla tipoexamen por su id
+// GetNotasEnfermeriaById obtiene un registro de la tabla notasenfermeria por su id
 // Id no existe
-func GetTipoExamenById(id int) (v *TipoExamen, err error) {
+func GetNotasEnfermeriaById(id int) (v *NotasEnfermeria, err error) {
 	o := orm.NewOrm()
-	v = &TipoExamen{IdTipoExamen: id}
+	v = &NotasEnfermeria{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllTipoExamen obtiene todos los registros de la tabla tipoexamen
+// GetAllNotasEnfermeria obtiene todos los registros de la tabla notasenfermeria
 // No existen registros
-func GetAllTipoExamen(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllNotasEnfermeria(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(TipoExamen))
+	qs := o.QueryTable(new(NotasEnfermeria))
 	for k, v := range query {
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
@@ -89,7 +96,7 @@ func GetAllTipoExamen(query map[string]string, fields []string, sortby []string,
 			return nil, errors.New("error: campos de 'order' no utilizados")
 		}
 	}
-	var l []TipoExamen
+	var l []NotasEnfermeria
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -111,29 +118,31 @@ func GetAllTipoExamen(query map[string]string, fields []string, sortby []string,
 	return nil, err
 }
 
-// UpdateTipoExamen actualiza un registro de la tabla tipoexamen
+// UpdateNotasEnfermeria actualiza un registro de la tabla notasenfermeria
 // El registro a actualizar no existe
-func UpdateTipoExamen(m *TipoExamen) (err error) {
+func UpdateNotasEnfermeria(m *NotasEnfermeria) (err error) {
 	o := orm.NewOrm()
-	v := TipoExamen{IdTipoExamen: m.IdTipoExamen}
+	v := NotasEnfermeria{Id: m.Id}
+	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
 		if num, err = o.Update(m); err == nil {
-			fmt.Println("Numero de registros actualizados:", num)
+			fmt.Println("Number of records updated in database:", num)
 		}
 	}
 	return
 }
 
-// DeleteTipoExamen elimina un registro de la tabla tipoexamen
+// DeleteNotasEnfermeria  elimina un registro de la tabla notasenfermeria
 // El registro a eliminar no existe
-func DeleteTipoExamen(id int) (err error) {
+func DeleteNotasEnfermeria(id int) (err error) {
 	o := orm.NewOrm()
-	v := TipoExamen{IdTipoExamen: id}
+	v := NotasEnfermeria{Id: id}
+	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&TipoExamen{IdTipoExamen: id}); err == nil {
-			fmt.Println("Numero de registros eliminados:", num)
+		if num, err = o.Delete(&NotasEnfermeria{Id: id}); err == nil {
+			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
 	return

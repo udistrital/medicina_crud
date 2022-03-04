@@ -21,6 +21,11 @@ func init() {
 				&controllers.AntecedenteController{},
 			),
 		),
+		beego.NSNamespace("/Especialidad",
+			beego.NSInclude(
+				&controllers.EspecialidadController{},
+			),
+		),
 		beego.NSNamespace("/ConsultaFisioterapia",
 			beego.NSInclude(
 				&controllers.ConsultaFisioterapiaController{},
@@ -43,19 +48,15 @@ func init() {
 			beego.NSInclude(
 				&controllers.HojaHistoriaController{},
 			),
-		), beego.NSNamespace("/Sistemas",
-			beego.NSInclude(
-				&controllers.SistemasController{},
-			),
 		),
-		beego.NSNamespace("/TipoAntecedente",
+		beego.NSNamespace("/NotasEnfermeria",
 			beego.NSInclude(
-				&controllers.TipoAntecedenteController{},
+				&controllers.NotasEnfermeriaController{},
 			),
-		),
-		beego.NSNamespace("/TipoExamen",
+		), 
+		beego.NSNamespace("/Sistema",
 			beego.NSInclude(
-				&controllers.TipoExamenController{},
+				&controllers.SistemaController{},
 			),
 		),
 	)

@@ -11,16 +11,18 @@ import (
 )
 
 type HojaHistoria struct {
-	IdHojaHistoria    int              `orm:"column(id_hoja_historia);pk;auto"`
-	IdHistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
-	IdDiagnostico     *Diagnostico     `orm:"column(id_diagnostico);rel(fk);null"`
-	FechaConsulta     time.Time        `orm:"column(fecha_consulta);type(date);null"`
-	Motivo            string           `orm:"column(motivo);null"`
-	Observacion       string           `orm:"column(observacion);null"`
-	Evolucion         string           `orm:"column(evolucion)type(json);null"`
-	IdEspecialidad    int              `orm:"column(id_especialidad);null"`
-	IdProfesional     int              `orm:"column(id_profesional);null"`
-	IdPersona         int              `orm:"column(id_persona);null"`
+	Id              int              `orm:"column(id_hoja_historia);pk;auto"`
+	HistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
+	FechaConsulta   *time.Time       `orm:"column(fecha_consulta);type(timestamp without time zone);null"`
+	Motivo          string           `orm:"column(motivo);null"`
+	Observacion     string           `orm:"column(observacion);null"`
+	Evolucion       string           `orm:"column(evolucion);type(json);null"`
+	Especialidad    *Especialidad    `orm:"column(id_especialidad);rel(fk);null"`
+	Profesional     float64          `orm:"column(id_profesional);type(bigint);null"`
+	Persona         float64          `orm:"column(id_persona);type(bigint);null"`
+	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	Activo            bool       `orm:"column(activo);null"`
 }
 
 func (t *HojaHistoria) TableName() string {
@@ -42,7 +44,7 @@ func AddHojaHistoria(m *HojaHistoria) (id int64, err error) {
 // Id no existe
 func GetHojaHistoriaById(id int) (v *HojaHistoria, err error) {
 	o := orm.NewOrm()
-	v = &HojaHistoria{IdHojaHistoria: id}
+	v = &HojaHistoria{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
@@ -124,7 +126,7 @@ func GetAllHojaHistoria(query map[string]string, fields []string, sortby []strin
 // El registro a actualizar no existe
 func UpdateHojaHistoria(m *HojaHistoria) (err error) {
 	o := orm.NewOrm()
-	v := HojaHistoria{IdHojaHistoria: m.IdHojaHistoria}
+	v := HojaHistoria{Id: m.Id}
 	if err = o.Read(&v); err == nil {
 		var num int64
 		if num, err = o.Update(m); err == nil {
@@ -138,10 +140,10 @@ func UpdateHojaHistoria(m *HojaHistoria) (err error) {
 // El registro a eliminar no existe
 func DeleteHojaHistoria(id int) (err error) {
 	o := orm.NewOrm()
-	v := HojaHistoria{IdHojaHistoria: id}
+	v := HojaHistoria{Id: id}
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&HojaHistoria{IdHojaHistoria: id}); err == nil {
+		if num, err = o.Delete(&HojaHistoria{Id: id}); err == nil {
 			fmt.Println("Numero de registros eliminados:", num)
 		}
 	}

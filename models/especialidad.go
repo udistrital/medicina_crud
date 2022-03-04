@@ -10,47 +10,47 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type TipoAntecedente struct {
-	IdTipoAntecedente int       `orm:"column(id_tipo_antecedente);pk;auto"`
-	Nombre            string    `orm:"column(nombre);null"`
-	Descripcion       string    `orm:"column(descripcion);null"`
-	Activo            bool      `orm:"column(activo);null"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(date);null"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(date);null"`
+type Especialidad struct {
+	Id                int        `orm:"column(id_especialidad);pk;auto"`
+	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	Nombre            string     `orm:"column(nombre);null"`
+	Descripcion       string     `orm:"column(descripcion);null"`
+	Activo            bool       `orm:"column(activo);null"`
 }
 
-func (p *TipoAntecedente) TableName() string {
-	return "tipoantecedente"
+func (p *Especialidad) TableName() string {
+	return "especialidad"
 }
 func init() {
-	orm.RegisterModel(new(TipoAntecedente))
+	orm.RegisterModel(new(Especialidad))
 }
 
-// AddTipoAntecedente inserta un registro en la tabla tipoantecedente
+// AddEspecialidad inserta un registro en la tabla especialidad
 // Último registro insertado con éxito
-func AddTipoAntecedente(m *TipoAntecedente) (id int64, err error) {
+func AddEspecialidad(m *Especialidad) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetTipoAntecedenteById obtiene un registro de la tabla tipoantecedente por su id
+// GetEspecialidadById obtiene un registro de la tabla especialidad por su id
 // Id no existe
-func GetTipoAntecedenteById(id int) (v *TipoAntecedente, err error) {
+func GetEspecialidadById(id int) (v *Especialidad, err error) {
 	o := orm.NewOrm()
-	v = &TipoAntecedente{IdTipoAntecedente: id}
+	v = &Especialidad{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllTipoAntecedente obtiene todos los registros de la tabla tipoantecedente
+// GetAllEspecialidad obtiene todos los registros de la tabla especialidad
 // No existen registros
-func GetAllTipoAntecedente(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllEspecialidad(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(TipoAntecedente))
+	qs := o.QueryTable(new(Especialidad))
 	for k, v := range query {
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
@@ -94,7 +94,7 @@ func GetAllTipoAntecedente(query map[string]string, fields []string, sortby []st
 			return nil, errors.New("error: campos de 'order' no utilizados")
 		}
 	}
-	var l []TipoAntecedente
+	var l []Especialidad
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -116,11 +116,11 @@ func GetAllTipoAntecedente(query map[string]string, fields []string, sortby []st
 	return nil, err
 }
 
-// UpdateTipoAntecedente actualiza un registro de la tabla tipoantecedente
+// UpdateEspecialidad actualiza un registro de la tabla especialidad
 // El registro a actualizar no existe
-func UpdateTipoAntecedente(m *TipoAntecedente) (err error) {
+func UpdateEspecialidad(m *Especialidad) (err error) {
 	o := orm.NewOrm()
-	v := TipoAntecedente{IdTipoAntecedente: m.IdTipoAntecedente}
+	v := Especialidad{Id: m.Id}
 	if err = o.Read(&v); err == nil {
 		var num int64
 		if num, err = o.Update(m); err == nil {
@@ -130,14 +130,14 @@ func UpdateTipoAntecedente(m *TipoAntecedente) (err error) {
 	return
 }
 
-// DeleteTipoAntecedente elimina un registro de la tabla tipoantecedente
+// DeleteEspecialidad elimina un registro de la tabla especialidad
 // El registro a eliminar no existe
-func DeleteTipoAntecedente(id int) (err error) {
+func DeleteEspecialidad(id int) (err error) {
 	o := orm.NewOrm()
-	v := TipoAntecedente{IdTipoAntecedente: id}
+	v := Especialidad{Id: id}
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&TipoAntecedente{IdTipoAntecedente: id}); err == nil {
+		if num, err = o.Delete(&Especialidad{Id: id}); err == nil {
 			fmt.Println("Numero de registros eliminados:", num)
 		}
 	}

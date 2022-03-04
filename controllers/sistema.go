@@ -11,12 +11,12 @@ import (
 	"github.com/astaxie/beego"
 )
 
-type SistemasController struct {
+type SistemaController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *SistemasController) URLMapping() {
+func (c *SistemaController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -26,15 +26,15 @@ func (c *SistemasController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description agregar un registro en la tabla Sistemas
-// @Param	body		body 	models.Sistemas	true		"Cuerpo para el contenido de Sistemas"
-// @Success 201 {int} models.Sistemas
+// @Description agregar un registro en la tabla Sistema
+// @Param	body		body 	models.Sistema	true		"Cuerpo para el contenido de Sistema"
+// @Success 201 {int} models.Sistema
 // @Failure 403 Cuerpo Vacío
 // @router / [post]
-func (c *SistemasController) Post() {
-	var v models.Sistemas
+func (c *SistemaController) Post() {
+	var v models.Sistema
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddSistemas(&v); err == nil {
+		if _, err := models.AddSistema(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -48,15 +48,15 @@ func (c *SistemasController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description consultar un registro de la tabla Sistemas por su id
+// @Description consultar un registro de la tabla Sistema por su id
 // @Param	id		path 	string	true		"Id a consultar"
-// @Success 200 {object} models.Sistemas
+// @Success 200 {object} models.Sistema
 // @Failure 403 :id está vacío
 // @router /:id [get]
-func (c *SistemasController) GetOne() {
+func (c *SistemaController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetSistemasById(id)
+	v, err := models.GetSistemaById(id)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -67,17 +67,17 @@ func (c *SistemasController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description consulta todos los registros de la tabla Sistemas
-// @Param   query   consulta    string  false   "Filtro. Por ejemplo, col1: v1, col2: v2 ..."
-// @Param   fields  consulta    string  false   "Campos devueltos. Por ejemplo, col1, col2 ..."
-// @Param   sortby  consulta    string  false   "Campos ordenados por. Por ejemplo, Col1, col2 ..."
-// @Param   order   consulta    string  false   "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ..."
-// @Param   limit   consulta    string  false   "Limite el tamaño del conjunto de resultados. Debe ser un número entero"
-// @Param   offset  consulta    string  false   "Posición inicial del conjunto de resultados. Debe ser un número entero"
-// @Success 200 {object} models.Sistemas
+// @Description consulta todos los registros de la tabla Sistema
+// @Param   query   query    string  false   "Filtro. Por ejemplo, col1: v1, col2: v2 ..."
+// @Param   fields  query    string  false   "Campos devueltos. Por ejemplo, col1, col2 ..."
+// @Param   sortby  query    string  false   "Campos ordenados por. Por ejemplo, Col1, col2 ..."
+// @Param   order   query    string  false   "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ..."
+// @Param   limit   query    string  false   "Limite el tamaño del conjunto de resultados. Debe ser un número entero"
+// @Param   offset  query    string  false   "Posición inicial del conjunto de resultados. Debe ser un número entero"
+// @Success 200 {object} models.Sistema
 // @Failure 403
 // @router / [get]
-func (c *SistemasController) GetAll() {
+func (c *SistemaController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -118,7 +118,7 @@ func (c *SistemasController) GetAll() {
 			query[k] = v
 		}
 	}
-	l, err := models.GetAllSistemas(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllSistema(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -129,18 +129,18 @@ func (c *SistemasController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description actualizar un registro de la tabla Sistemas
+// @Description actualizar un registro de la tabla Sistema
 // @Param	id		path 	string	true		"Id del registro a actualizar"
-// @Param	body		body 	models.Sistemas	true		"Cuerpo para el contenido de Sistemas"
-// @Success 200 {object} models.Sistemas
+// @Param	body		body 	models.Sistema	true		"Cuerpo para el contenido de Sistema"
+// @Success 200 {object} models.Sistema
 // @Failure 403 :id no es entero
 // @router /:id [put]
-func (c *SistemasController) Put() {
+func (c *SistemaController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.Sistemas{IdSistema: id}
+	v := models.Sistema{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateSistemas(&v); err == nil {
+		if err := models.UpdateSistema(&v); err == nil {
 			c.Data["json"] = "OK"
 		} else {
 			c.Data["json"] = err.Error()
@@ -153,15 +153,15 @@ func (c *SistemasController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description elimina un registro de la tabla Sistemas
+// @Description elimina un registro de la tabla Sistema
 // @Param	id		path 	string	true		"Id del registro a eliminar"
 // @Success 200 {string} borrado exitoso!
 // @Failure 403 Id vacío
 // @router /:id [delete]
-func (c *SistemasController) Delete() {
+func (c *SistemaController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteSistemas(id); err == nil {
+	if err := models.DeleteSistema(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()

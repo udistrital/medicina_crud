@@ -9,7 +9,7 @@ info:
   license:
     name: BSD-3-Clause
     url: http://opensource.org/licenses/BSD-3-Clause
-basePath: /v1
+basePath: /Medicina
 paths:
   /Antecedente/:
     get:
@@ -18,27 +18,27 @@ paths:
       description: consulta todos los registros de la tabla Antecedente
       operationId: AntecedenteController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -132,27 +132,27 @@ paths:
       description: consulta todos los registros de la tabla ConsultaFisioterapia
       operationId: ConsultaFisioterapiaController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -246,27 +246,27 @@ paths:
       description: consulta todos los registros de la tabla Diagnostico
       operationId: DiagnosticoController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -360,27 +360,27 @@ paths:
       description: consulta todos los registros de la tabla Examen
       operationId: ExamenController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -474,27 +474,27 @@ paths:
       description: consulta todos los registros de la tabla HistoriaClinica
       operationId: HistoriaClinicaController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -588,27 +588,27 @@ paths:
       description: consulta todos los registros de la tabla HojaHistoria
       operationId: HojaHistoriaController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -627,7 +627,7 @@ paths:
       parameters:
       - in: body
         name: body
-        description: Cuerpo para el contenido de ConsultaFisioterapia
+        description: Cuerpo para el contenido de queryFisioterapia
         required: true
         schema:
           $ref: '#/definitions/models.HojaHistoria'
@@ -640,12 +640,12 @@ paths:
     get:
       tags:
       - HojaHistoria
-      description: consultar un registro de la tabla HojaHistoria por su id
+      description: queryr un registro de la tabla HojaHistoria por su id
       operationId: HojaHistoriaController.Get One
       parameters:
       - in: path
         name: id
-        description: Id a consultar
+        description: Id a queryr
         required: true
         type: string
       responses:
@@ -668,7 +668,7 @@ paths:
         type: string
       - in: body
         name: body
-        description: Cuerpo para el contenido de ConsultaFisioterapia
+        description: Cuerpo para el contenido de queryFisioterapia
         required: true
         schema:
           $ref: '#/definitions/models.HojaHistoria'
@@ -695,34 +695,34 @@ paths:
           description: '{string} borrado exitoso!'
         "403":
           description: Id vacío
-  /Sistemas/:
+  /Sistema/:
     get:
       tags:
-      - Sistemas
-      description: consulta todos los registros de la tabla Sistemas
-      operationId: SistemasController.Get All
+      - Sistema
+      description: consulta todos los registros de la tabla Sistema
+      operationId: SistemaController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -730,32 +730,32 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Sistemas'
+            $ref: '#/definitions/models.Sistema'
         "403":
           description: ""
     post:
       tags:
-      - Sistemas
-      description: agregar un registro en la tabla Sistemas
-      operationId: SistemasController.Post
+      - Sistema
+      description: agregar un registro en la tabla Sistema
+      operationId: SistemaController.Post
       parameters:
       - in: body
         name: body
-        description: Cuerpo para el contenido de Sistemas
+        description: Cuerpo para el contenido de Sistema
         required: true
         schema:
-          $ref: '#/definitions/models.Sistemas'
+          $ref: '#/definitions/models.Sistema'
       responses:
         "201":
-          description: '{int} models.Sistemas'
+          description: '{int} models.Sistema'
         "403":
           description: Cuerpo Vacío
-  /Sistemas/{id}:
+  /Sistema/{id}:
     get:
       tags:
-      - Sistemas
-      description: consultar un registro de la tabla Sistemas por su id
-      operationId: SistemasController.Get One
+      - Sistema
+      description: consultar un registro de la tabla Sistema por su id
+      operationId: SistemaController.Get One
       parameters:
       - in: path
         name: id
@@ -766,14 +766,14 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Sistemas'
+            $ref: '#/definitions/models.Sistema'
         "403":
           description: :id está vacío
     put:
       tags:
-      - Sistemas
-      description: actualizar un registro de la tabla Sistemas
-      operationId: SistemasController.Put
+      - Sistema
+      description: actualizar un registro de la tabla Sistema
+      operationId: SistemaController.Put
       parameters:
       - in: path
         name: id
@@ -782,250 +782,22 @@ paths:
         type: string
       - in: body
         name: body
-        description: Cuerpo para el contenido de Sistemas
+        description: Cuerpo para el contenido de Sistema
         required: true
         schema:
-          $ref: '#/definitions/models.Sistemas'
+          $ref: '#/definitions/models.Sistema'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Sistemas'
+            $ref: '#/definitions/models.Sistema'
         "403":
           description: :id no es entero
     delete:
       tags:
-      - Sistemas
-      description: elimina un registro de la tabla Sistemas
-      operationId: SistemasController.Delete
-      parameters:
-      - in: path
-        name: id
-        description: Id del registro a eliminar
-        required: true
-        type: string
-      responses:
-        "200":
-          description: '{string} borrado exitoso!'
-        "403":
-          description: Id vacío
-  /TipoAntecedente/:
-    get:
-      tags:
-      - TipoAntecedente
-      description: consulta todos los registros de la tabla TipoAntecedente
-      operationId: TipoAntecedenteController.Get All
-      parameters:
-      - in: consulta
-        name: query
-        description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
-        type: string
-      - in: consulta
-        name: fields
-        description: Campos devueltos. Por ejemplo, col1, col2 ...
-        type: string
-      - in: consulta
-        name: sortby
-        description: Campos ordenados por. Por ejemplo, Col1, col2 ...
-        type: string
-      - in: consulta
-        name: order
-        description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
-        type: string
-      - in: consulta
-        name: limit
-        description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
-        type: string
-      - in: consulta
-        name: offset
-        description: Posición inicial del conjunto de resultados. Debe ser un número entero
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoAntecedente'
-        "403":
-          description: ""
-    post:
-      tags:
-      - TipoAntecedente
-      description: agregar un registro en la tabla TipoAntecedente
-      operationId: TipoAntecedenteController.Post
-      parameters:
-      - in: body
-        name: body
-        description: Cuerpo para el contenido de TipoAntecedente
-        required: true
-        schema:
-          $ref: '#/definitions/models.TipoAntecedente'
-      responses:
-        "201":
-          description: '{int} models.TipoAntecedente'
-        "403":
-          description: Cuerpo Vacío
-  /TipoAntecedente/{id}:
-    get:
-      tags:
-      - TipoAntecedente
-      description: consultar un registro de la tabla TipoAntecedente por su id
-      operationId: TipoAntecedenteController.Get One
-      parameters:
-      - in: path
-        name: id
-        description: Id a consultar
-        required: true
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoAntecedente'
-        "403":
-          description: :id está vacío
-    put:
-      tags:
-      - TipoAntecedente
-      description: actualizar un registro de la tabla TipoAntecedente
-      operationId: TipoAntecedenteController.Put
-      parameters:
-      - in: path
-        name: id
-        description: Id del registro a actualizar
-        required: true
-        type: string
-      - in: body
-        name: body
-        description: Cuerpo para el contenido de TipoAntecedente
-        required: true
-        schema:
-          $ref: '#/definitions/models.TipoAntecedente'
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoAntecedente'
-        "403":
-          description: :id no es entero
-    delete:
-      tags:
-      - TipoAntecedente
-      description: elimina un registro de la tabla TipoAntecedente
-      operationId: TipoAntecedenteController.Delete
-      parameters:
-      - in: path
-        name: id
-        description: Id del registro a eliminar
-        required: true
-        type: string
-      responses:
-        "200":
-          description: '{string} borrado exitoso!'
-        "403":
-          description: Id vacío
-  /TipoExamen/:
-    get:
-      tags:
-      - TipoExamen
-      description: consulta todos los registros de la tabla TipoExamen
-      operationId: TipoExamenController.Get All
-      parameters:
-      - in: consulta
-        name: query
-        description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
-        type: string
-      - in: consulta
-        name: fields
-        description: Campos devueltos. Por ejemplo, col1, col2 ...
-        type: string
-      - in: consulta
-        name: sortby
-        description: Campos ordenados por. Por ejemplo, Col1, col2 ...
-        type: string
-      - in: consulta
-        name: order
-        description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
-        type: string
-      - in: consulta
-        name: limit
-        description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
-        type: string
-      - in: consulta
-        name: offset
-        description: Posición inicial del conjunto de resultados. Debe ser un número entero
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoExamen'
-        "403":
-          description: ""
-    post:
-      tags:
-      - TipoExamen
-      description: agregar un registro en la tabla TipoExamen
-      operationId: TipoExamenController.Post
-      parameters:
-      - in: body
-        name: body
-        description: Cuerpo para el contenido de TipoExamen
-        required: true
-        schema:
-          $ref: '#/definitions/models.TipoExamen'
-      responses:
-        "201":
-          description: '{int} models.TipoExamen'
-        "403":
-          description: Cuerpo Vacío
-  /TipoExamen/{id}:
-    get:
-      tags:
-      - TipoExamen
-      description: consultar un registro de la tabla TipoExamen por su id
-      operationId: TipoExamenController.Get One
-      parameters:
-      - in: path
-        name: id
-        description: Id a consultar
-        required: true
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoExamen'
-        "403":
-          description: :id está vacío
-    put:
-      tags:
-      - TipoExamen
-      description: actualizar un registro de la tabla TipoExamen
-      operationId: TipoExamenController.Put
-      parameters:
-      - in: path
-        name: id
-        description: Id del registro a actualizar
-        required: true
-        type: string
-      - in: body
-        name: body
-        description: Cuerpo para el contenido de TipoExamen
-        required: true
-        schema:
-          $ref: '#/definitions/models.TipoExamen'
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoExamen'
-        "403":
-          description: :id no es entero
-    delete:
-      tags:
-      - TipoExamen
-      description: elimina un registro de la tabla TipoExamen
-      operationId: TipoExamenController.Delete
+      - Sistema
+      description: elimina un registro de la tabla Sistema
+      operationId: SistemaController.Delete
       parameters:
       - in: path
         name: id
@@ -1042,14 +814,46 @@ definitions:
     title: Antecedente
     type: object
     properties:
-      IdAntecedente:
+      Alergicos:
+        type: string
+      Ccv:
+        type: string
+      Ciclos:
+        type: string
+      CompañerosSexuales:
+        type: string
+      Familiares:
+        type: string
+      Farmacologicos:
+        type: string
+      Fog:
+        type: string
+      Fup:
+        type: string
+      Fur:
+        type: string
+      GenitoUrinarios:
+        type: string
+      HistoriaClinica:
+        $ref: '#/definitions/models.HistoriaClinica'
+      Hospitalarios:
+        type: string
+      Id:
         type: integer
         format: int64
-      IdHistoriaClinica:
-        $ref: '#/definitions/models.HistoriaClinica'
-      IdTipoAntecedente:
-        $ref: '#/definitions/models.TipoAntecedente'
-      Observaciones:
+      Menarquia:
+        type: string
+      Ocupacionales:
+        type: string
+      Patologicos:
+        type: string
+      Pp:
+        type: string
+      Quirurgicos:
+        type: string
+      Seno:
+        type: string
+      Traumaticos:
         type: string
   models.ConsultaFisioterapia:
     title: ConsultaFisioterapia
@@ -1057,12 +861,14 @@ definitions:
     properties:
       Evolucion:
         type: string
-      IdConsultaFisioterapia:
+      HistoriaClinica:
+        $ref: '#/definitions/models.HistoriaClinica'
+      HojaHistoria:
+        $ref: '#/definitions/models.HojaHistoria'
+      Id:
         type: integer
         format: int64
-      IdHojaHistoria:
-        $ref: '#/definitions/models.HojaHistoria'
-      Motivo_consulta:
+      MotivoConsulta:
         type: string
       Observaciones:
         type: string
@@ -1074,24 +880,15 @@ definitions:
     title: Diagnostico
     type: object
     properties:
-      Activo:
-        type: boolean
       Analisis:
         type: string
       Descripcion:
         type: string
-      FechaCreacion:
-        type: string
-        format: datetime
-      FechaModificacion:
-        type: string
-        format: datetime
-      IdDiagnostico:
-        type: integer
-        format: int64
-      Nombre:
-        type: string
-      Numero:
+      HistoriaClinica:
+        $ref: '#/definitions/models.HistoriaClinica'
+      HojaHistoria:
+        $ref: '#/definitions/models.HojaHistoria'
+      Id:
         type: integer
         format: int64
       PlanDeManejo:
@@ -1100,97 +897,122 @@ definitions:
     title: Examen
     type: object
     properties:
-      FechaExamen:
+      Abdomen:
         type: string
-        format: datetime
-      IdExamen:
+      CabezaYCuello:
+        type: string
+      EstadoGeneral:
+        type: string
+      Extremidades:
+        type: string
+      Fc:
+        type: string
+      Fr:
+        type: string
+      Genital:
+        type: string
+      HistoriaClinica:
+        $ref: '#/definitions/models.HistoriaClinica'
+      HojaHistoria:
+        $ref: '#/definitions/models.HojaHistoria'
+      Id:
         type: integer
         format: int64
-      IdHojaHistoria:
-        $ref: '#/definitions/models.HojaHistoria'
-      IdTipoExamen:
-        $ref: '#/definitions/models.TipoExamen'
-      Nombre:
+      Imc:
         type: string
-      Observacion:
+      Laboratorio:
+        type: string
+      Neurologico:
+        type: string
+      Ojos:
+        type: string
+      Orl:
+        type: string
+      Peso:
+        type: string
+      RuidosCardiacos:
+        type: string
+      RuidosRespiratorios:
+        type: string
+      Sao2:
+        type: string
+      Ta:
+        type: string
+      Talla:
+        type: string
+      Temperatura:
+        type: string
+      Torax:
         type: string
   models.HistoriaClinica:
     title: HistoriaClinica
     type: object
     properties:
-      IdHistoriaClinica:
+      Id:
         type: integer
         format: int64
-      IdTercero:
+      Tercero:
         type: integer
         format: int64
   models.HojaHistoria:
     title: HojaHistoria
     type: object
     properties:
+      Especialidad:
+        type: integer
+        format: int64
       Evolucion:
         type: string
       FechaConsulta:
         type: string
         format: datetime
-      IdDiagnostico:
-        $ref: '#/definitions/models.Diagnostico'
-      IdEspecialidad:
-        type: integer
-        format: int64
-      IdHistoriaClinica:
+      HistoriaClinica:
         $ref: '#/definitions/models.HistoriaClinica'
-      IdHojaHistoria:
-        type: integer
-        format: int64
-      IdPersona:
-        type: integer
-        format: int64
-      IdProfesional:
+      Id:
         type: integer
         format: int64
       Motivo:
         type: string
       Observacion:
         type: string
-  models.Sistemas:
-    title: Sistemas
+      Persona:
+        type: number
+        format: double
+      Profesional:
+        type: number
+        format: double
+  models.Sistema:
+    title: Sistema
     type: object
     properties:
-      IdHojaHistoria:
+      Articular:
+        type: string
+      CardioVascular:
+        type: string
+      Colageno:
+        type: string
+      Digestivo:
+        type: string
+      HistoriaClinica:
+        $ref: '#/definitions/models.HistoriaClinica'
+      HojaHistoria:
         $ref: '#/definitions/models.HojaHistoria'
-      IdSistema:
+      Id:
         type: integer
         format: int64
-      NombreSistema:
+      Linfatico:
         type: string
-      Observacion:
+      Muscular:
         type: string
-  models.TipoAntecedente:
-    title: TipoAntecedente
-    type: object
-    properties:
-      Activo:
-        type: boolean
-      Descripcion:
+      Neurologico:
         type: string
-      FechaCreacion:
+      Oseo:
         type: string
-        format: datetime
-      FechaModificacion:
+      Piel:
         type: string
-        format: datetime
-      IdTipoAntecedente:
-        type: integer
-        format: int64
-      Nombre:
+      Respiratorio:
         type: string
-  models.TipoExamen:
-    title: TipoExamen
-    type: object
-    properties:
-      IdTipoExamen:
-        type: integer
-        format: int64
-      Nombre:
+      Sentidos:
+        type: string
+      Urinario:
         type: string

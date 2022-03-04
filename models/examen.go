@@ -11,12 +11,32 @@ import (
 )
 
 type Examen struct {
-	IdExamen       int           `orm:"column(id_examen);pk;auto"`
-	IdHojaHistoria *HojaHistoria `orm:"column(id_hoja_historia);rel(fk);null"`
-	IdTipoExamen   *TipoExamen   `orm:"column(id_tipo_examen);rel(fk);null"`
-	Nombre         string        `orm:"column(nombre);null"`
-	Observacion    string        `orm:"column(observacion);null"`
-	FechaExamen    time.Time     `orm:"column(fecha_examen);type(date);null"`
+	Id                  int              `orm:"column(id_examen);pk;auto"`
+	HistoriaClinica     *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
+	HojaHistoria        *HojaHistoria    `orm:"column(id_hoja_historia);rel(fk);null"`
+	Laboratorio         string           `orm:"column(laboratorio);null"`
+	Ta                  string           `orm:"column(ta);null"`
+	Fc                  string           `orm:"column(fc);null"`
+	Sao2                string           `orm:"column(sao2);null"`
+	Imc                 string           `orm:"column(imc);null"`
+	Fr                  string           `orm:"column(fr);null"`
+	Temperatura         string           `orm:"column(temperatura);null"`
+	Peso                string           `orm:"column(peso);null"`
+	Talla               string           `orm:"column(talla);null"`
+	EstadoGeneral       string           `orm:"column(estado_general);null"`
+	CabezaYCuello       string           `orm:"column(cabeza_cuello);null"`
+	Orl                 string           `orm:"column(orl);null"`
+	Ojos                string           `orm:"column(ojos);null"`
+	Torax               string           `orm:"column(torax);null"`
+	RuidosRespiratorios string           `orm:"column(ruidos_respiratorios);null"`
+	RuidosCardiacos     string           `orm:"column(ruidos_cardiacos);null"`
+	Abdomen             string           `orm:"column(abdomen);null"`
+	Neurologico         string           `orm:"column(neurologico);null"`
+	Genital             string           `orm:"column(genital);null"`
+	Extremidades        string           `orm:"column(extremidades);null"`
+	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	Activo            bool       `orm:"column(activo);null"`
 }
 
 func (t *Examen) TableName() string {
@@ -38,7 +58,7 @@ func AddExamen(m *Examen) (int64, error) {
 // Id no existe
 func GetExamenById(id int) (Examen, error) {
 	o := orm.NewOrm()
-	m := Examen{IdExamen: id}
+	m := Examen{Id: id}
 	err := o.Read(&m)
 	return m, err
 }
@@ -118,7 +138,7 @@ func GetAllExamen(query map[string]string, fields []string, sortby []string, ord
 // El registro a actualizar no existe
 func UpdateExamen(m *Examen) (err error) {
 	o := orm.NewOrm()
-	v := Examen{IdExamen: m.IdExamen}
+	v := Examen{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -133,10 +153,10 @@ func UpdateExamen(m *Examen) (err error) {
 // El registro a eliminar no existe
 func DeleteExamen(id int) (err error) {
 	o := orm.NewOrm()
-	v := Examen{IdExamen: id}
+	v := Examen{Id: id}
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&Examen{IdExamen: id}); err == nil {
+		if num, err = o.Delete(&Examen{Id: id}); err == nil {
 			fmt.Println("Numero de registros eliminados:", num)
 		}
 	}
