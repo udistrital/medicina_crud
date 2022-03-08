@@ -126,14 +126,13 @@ func (c *HojaHistoriaController) GetAll() {
 
 	l, err := models.GetAllHojaHistoria(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		logs.Error(err)
-		c.Data["system"] = err
-		c.Abort("404")
+		c.Data["mesaage"] = "Error service GetAll: The request contains an incorrect parameter or no record exists"
+ c.Abort("404")
 	} else {
-		if l == nil {
-			l = append(l, map[string]interface{}{})
-		}
-		c.Data["json"] = l
+if l == nil {
+l = append(l, map[string]interface{}{})
+}
+c.Data["json"] = map[string]interface{}{"Success": true, "Status": "200", "Message": "Request successful", "Data": l}
 	}
 	c.ServeJSON()
 }
