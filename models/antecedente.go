@@ -25,7 +25,7 @@ type Antecedente struct {
 	Menarquia          string           `orm:"column(menarquia);null"`
 	Fur                string           `orm:"column(fur);null"`
 	Ciclos             string           `orm:"column(ciclos);null"`
-	CompañerosSexuales string           `orm:"column(compañeros_sexuales);null"`
+	CompañerosSexuales string           `orm:"column(companeros_sexuales);null"`
 	Fog                string           `orm:"column(fog);null"`
 	Pp                 string           `orm:"column(pp);null"`
 	Fup                string           `orm:"column(fup);null"`
