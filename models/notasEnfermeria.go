@@ -11,14 +11,33 @@ import (
 )
 
 type NotasEnfermeria struct {
-	Id              int              `orm:"column(id_notas);pk;auto"`
-	HistoriaClinica *HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
-	HojaHistoria    *HojaHistoria    `orm:"column(id_hoja_historia);rel(fk);null"`
-	Descripcion     string           `orm:"column(descripcion);null"`
-	SignosVitales   string           `orm:"column(signos_vitales);null"`
-	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
-	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
-	Activo            bool       `orm:"column(activo);null"`
+	Id              	int              `orm:"column(id_notas);pk;auto"`
+	HistoriaClinica 	*HistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
+	HojaHistoria    	*HojaHistoria    `orm:"column(id_hoja_historia);rel(fk);null"`
+	Descripcion     	string           `orm:"column(descripcion);null"`
+	Ta                  string       	 `orm:"column(ta);null"`
+	Fc                  string       	 `orm:"column(fc);null"`
+	Sao2                string       	 `orm:"column(sao2);null"`
+	Imc                 string       	 `orm:"column(imc);null"`
+	Fr                  string       	 `orm:"column(fr);null"`
+	Temperatura         string       	 `orm:"column(temperatura);null"`
+	Peso                string       	 `orm:"column(peso);null"`
+	Talla               string       	 `orm:"column(talla);null"`
+	EstadoGeneral       string       	 `orm:"column(estado_general);null"`
+	CabezaYCuello       string       	 `orm:"column(cabeza_cuello);null"`
+	Orl                 string       	 `orm:"column(orl);null"`
+	Ojos                string       	 `orm:"column(ojos);null"`
+	Torax               string       	 `orm:"column(torax);null"`
+	RuidosRespiratorios string       	 `orm:"column(ruidos_respiratorios);null"`
+	RuidosCardiacos     string       	 `orm:"column(ruidos_cardiacos);null"`
+	Abdomen             string       	 `orm:"column(abdomen);null"`
+	Neurologico         string       	 `orm:"column(neurologico);null"`
+	Genital             string       	 `orm:"column(genital);null"`
+	Extremidades        string       	 `orm:"column(extremidades);null"`
+	Contacto        	string       	 `orm:"column(contacto);null"`
+	FechaCreacion     *time.Time 	     `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion *time.Time 		 `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	Activo            bool       		 `orm:"column(activo);null"`
 }
 
 func (t *NotasEnfermeria) TableName() string {
